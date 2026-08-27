@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router";
 import Hero from "../components/Hero";
-import EventCard from "../components/EventCard";
+import EventGrid from "../components/EventGrid";
 
 const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL;
 const headers = {
@@ -94,15 +94,7 @@ export default function HomePage() {
           </label>
         </section>
 
-        <section className="event-grid">
-          {filteredEvents.map((event) => (
-            <EventCard
-              key={event.id}
-              event={event}
-              formatEventDate={formatEventDate}
-            />
-          ))}
-        </section>
+        <EventGrid events={filteredEvents} formatEventDate={formatEventDate} />
       </main>
     </>
   );

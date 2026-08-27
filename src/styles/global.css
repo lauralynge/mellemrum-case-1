@@ -62,7 +62,9 @@ select {
   font-size: 0.92rem;
   padding: 0.55rem 0.85rem;
   text-decoration: none;
-  transition: background 160ms ease, color 160ms ease;
+  transition:
+    background 160ms ease,
+    color 160ms ease;
 }
 
 .nav-links a:hover,
@@ -71,13 +73,41 @@ select {
   color: white;
 }
 
+/* Hero styling */
 .hero {
-  background:
-    linear-gradient(90deg, rgba(12, 42, 34, 0.92) 0%, rgba(12, 42, 34, 0.7) 52%, rgba(12, 42, 34, 0.28) 100%),
-    url("https://images.unsplash.com/photo-1595146463222-19603449c6af?q=80&w=3872&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D") center / cover;
-  color: white;
+  position: relative;
   min-height: 64vh;
   padding: clamp(5rem, 10vw, 9rem) var(--content-edge) 5rem;
+  color: white;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start; /* ← FIXER BREDDEN */
+
+  background-size: cover;
+  background-position: center;
+}
+
+/* Gradient overlay */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(12, 42, 34, 0.92) 0%,
+    rgba(12, 42, 34, 0.7) 52%,
+    rgba(12, 42, 34, 0.28) 100%
+  );
+  z-index: 0;
+}
+
+/* Content above gradient */
+.hero > * {
+  position: relative;
+  z-index: 1;
+  align-items: flex-start;
 }
 
 .eyebrow {
@@ -93,8 +123,7 @@ select {
   color: var(--green);
 }
 
-.hero h1,
-.page-header h1 {
+.hero h1 {
   font-size: clamp(3.2rem, 8vw, 7.5rem);
   letter-spacing: -0.075em;
   line-height: 0.9;
@@ -124,6 +153,7 @@ select {
 .hero-link:hover {
   transform: translateY(-2px);
 }
+
 
 main {
   margin: 0 auto;
@@ -182,7 +212,9 @@ select {
   color: var(--ink);
   min-height: 48px;
   padding: 0.75rem 0.9rem;
-  transition: border-color 160ms ease, box-shadow 160ms ease;
+  transition:
+    border-color 160ms ease,
+    box-shadow 160ms ease;
 }
 
 input:focus,
@@ -207,7 +239,9 @@ select:focus {
   flex-direction: column;
   min-height: 100%;
   overflow: hidden;
-  transition: box-shadow 180ms ease, transform 180ms ease;
+  transition:
+    box-shadow 180ms ease,
+    transform 180ms ease;
 }
 
 .event-card:hover {
@@ -269,7 +303,9 @@ select:focus {
   margin-top: 1rem;
   padding: 0.7rem 1rem;
   text-decoration: none;
-  transition: background 160ms ease, color 160ms ease;
+  transition:
+    background 160ms ease,
+    color 160ms ease;
 }
 
 .card-link:hover {
@@ -282,37 +318,15 @@ select:focus {
   padding: 1rem;
 }
 
-.page-header,
 .admin-header {
   background: var(--green);
   color: white;
   padding: 5rem var(--content-edge);
 }
 
-.about-header {
-  background:
-    linear-gradient(90deg, rgba(12, 42, 34, 0.9) 0%, rgba(12, 42, 34, 0.58) 58%, rgba(12, 42, 34, 0.2) 100%),
-    url("https://images.unsplash.com/photo-1553376482-e96b68bd1e11?q=80&w=2400&auto=format&fit=crop&ixlib=rb-4.1.0") center / cover;
-  min-height: 68vh;
-  display: flex;
-  align-items: flex-end;
-}
 
-.page-header h1 {
-  font-size: clamp(3rem, 6vw, 6rem);
-}
 
-.about-header-content {
-  max-width: 850px;
-}
 
-.about-header-content > p:last-child {
-  color: rgba(255, 255, 255, 0.78);
-  font-size: clamp(1.1rem, 2vw, 1.35rem);
-  line-height: 1.5;
-  margin: 1.75rem 0 0;
-  max-width: 34rem;
-}
 
 .lead {
   color: var(--ink) !important;

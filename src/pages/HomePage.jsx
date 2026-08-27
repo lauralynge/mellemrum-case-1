@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router";
+import Hero from "../components/Hero";
 
 const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL;
 const headers = {
@@ -45,17 +46,14 @@ export default function HomePage() {
 
   return (
     <>
-      <header className="hero">
-        <p className="eyebrow">Kultur i Aarhus</p>
-        <h1>Find plads til noget nyt.</h1>
-        <p className="hero-copy">
-          Koncerter, talks og workshops samlet ét sted. Find dit næste event, og
-          tilmeld dig på få minutter.
-        </p>
-        <a className="hero-link" href="#events">
-          Se kommende events ↓
-        </a>
-      </header>
+      <Hero
+        eyebrow="Kultur i Aarhus"
+        title="Find plads til noget nyt."
+        text="Koncerter, talks og workshops samlet ét sted. Find dit næste event, og tilmeld dig på få minutter."
+        backgroundImage="https://images.unsplash.com/photo-1595146463222-19603449c6af?q=80&w=3872&auto=format&fit=crop"
+        linkText="Se kommende events ↓"
+        linkHref="#events"
+      />
 
       <main id="events">
         <section className="section-heading">

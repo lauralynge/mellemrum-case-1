@@ -1,15 +1,17 @@
 import { Link } from "react-router";
+import Hero from "../components/Hero";
 
 export default function AboutPage() {
   return (
     <>
-      <header className="page-header about-header">
-        <div className="about-header-content">
-          <p className="eyebrow">Om Mellemrum</p>
-          <h1>Vi skaber mellemrum i kalenderen.</h1>
-          <p>Udvalgte kulturoplevelser og nye perspektiver på Aarhus.</p>
-        </div>
-      </header>
+      <Hero
+        className="about-hero"
+        eyebrow="Om Mellemrum"
+        title="Vi skaber mellemrum i kalenderen."
+        text="Udvalgte kulturoplevelser og nye perspektiver på Aarhus."
+        backgroundImage="https://images.unsplash.com/photo-1553376482-e96b68bd1e11?q=80&w=2400&auto=format&fit=crop&ixlib=rb-4.1.0"
+      />
+
       <main className="about-page">
         <section className="about-intro" aria-labelledby="about-intro-title">
           <div>

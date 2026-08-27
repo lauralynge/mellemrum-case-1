@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router";
 import Hero from "../components/Hero";
 import EventGrid from "../components/EventGrid";
+import Filters from "../components/Filters";
 
 const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL;
 const headers = {
@@ -53,6 +54,7 @@ export default function HomePage() {
 
   return (
     <>
+      {/*Hero section*/}
       <Hero
         eyebrow="Kultur i Aarhus"
         title="Find plads til noget nyt."
@@ -61,7 +63,7 @@ export default function HomePage() {
         linkText="Se kommende events ↓"
         linkHref="#events"
       />
-
+      {/*Title section*/}
       <main id="events">
         <section className="section-heading">
           <div>
@@ -71,29 +73,15 @@ export default function HomePage() {
           <p>Kuraterede oplevelser i byen – fra små scener til store idéer.</p>
         </section>
 
-        <section className="filters">
-          <label>
-            Søg
-            <input
-              type="search"
-              value={search}
-              onChange={(event) => setSearch(event.target.value)}
-              placeholder="Søg efter titel eller sted"
-            />
-          </label>
-          <label>
-            Kategori
-            <select
-              value={category}
-              onChange={(event) => setCategory(event.target.value)}
-            >
-              {categories.map((item) => (
-                <option key={item}>{item}</option>
-              ))}
-            </select>
-          </label>
-        </section>
-
+        {/*Filter section*/}
+        <Filters
+          search={search}
+          setSearch={setSearch}
+          category={category}
+          setCategory={setCategory}
+          categories={categories}
+        />
+        {/*EventGrid section med EventCard komponenter*/}
         <EventGrid events={filteredEvents} formatEventDate={formatEventDate} />
       </main>
     </>

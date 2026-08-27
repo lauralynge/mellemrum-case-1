@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router";
 import EventDetail from "../components/EventDetail";
+import RegistrationForm from "../components/RegistrationForm";
 
 const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL;
 const headers = {
@@ -44,32 +45,13 @@ export default function EventPage() {
 
         <EventDetail event={event} />
 
-        <section className="signup-panel">
-          <div>
-            <p className="eyebrow dark">Tilmelding</p>
-            <h2>Reserver din plads</h2>
-            <p>
-              Udfyld formularen, så sender vi din tilmelding til arrangøren.
-            </p>
-          </div>
-
-          <form onSubmit={handleSubmit}>
-            <label>
-              Navn
-              <input
-                value={name}
-                onChange={(inputEvent) => setName(inputEvent.target.value)}
-              />
-            </label>
-            <span>E-mail</span>
-            <input
-              value={email}
-              onChange={(inputEvent) => setEmail(inputEvent.target.value)}
-              placeholder="dig@example.com"
-            />
-            <button type="submit">Tilmeld mig</button>
-          </form>
-        </section>
+        <RegistrationForm
+          name={name}
+          email={email}
+          setName={setName}
+          setEmail={setEmail}
+          onSubmit={handleSubmit}
+        />
       </main>
     </>
   );

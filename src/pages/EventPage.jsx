@@ -50,15 +50,24 @@ export default function EventPage() {
             <div className="detail-list">
               <p>
                 <strong>Dato</strong>
-                {date.toLocaleDateString("da-DK", { weekday: "long", day: "numeric", month: "long" })} kl.{" "}
-                {date.toLocaleTimeString("da-DK", { hour: "2-digit", minute: "2-digit" })}
+                {date.toLocaleDateString("da-DK", {
+                  weekday: "long",
+                  day: "numeric",
+                  month: "long",
+                })}{" "}
+                kl.{" "}
+                {date.toLocaleTimeString("da-DK", {
+                  hour: "2-digit",
+                  minute: "2-digit",
+                })}
               </p>
               <p>
                 <strong>Sted</strong>
                 <span>
                   {event.venueName}
                   <br />
-                  {event.venueAddress}, {event.venuePostalCode} {event.venueCity}
+                  {event.venueAddress}, {event.venuePostalCode}{" "}
+                  {event.venueCity}
                   {event.venueWebsite && (
                     <>
                       <br />
@@ -80,13 +89,18 @@ export default function EventPage() {
           <div>
             <p className="eyebrow dark">Tilmelding</p>
             <h2>Reserver din plads</h2>
-            <p>Udfyld formularen, så sender vi din tilmelding til arrangøren.</p>
+            <p>
+              Udfyld formularen, så sender vi din tilmelding til arrangøren.
+            </p>
           </div>
 
           <form onSubmit={handleSubmit}>
             <label>
               Navn
-              <input value={name} onChange={(inputEvent) => setName(inputEvent.target.value)} />
+              <input
+                value={name}
+                onChange={(inputEvent) => setName(inputEvent.target.value)}
+              />
             </label>
             <span>E-mail</span>
             <input
@@ -98,32 +112,6 @@ export default function EventPage() {
           </form>
         </section>
       </main>
-      <footer className="site-footer">
-        <div className="footer-top">
-          <div className="footer-intro">
-            <p className="footer-brand">
-              mellemrum<span>.</span>
-            </p>
-            <p>Udvalgte kulturoplevelser og nye perspektiver på Aarhus.</p>
-          </div>
-          <nav className="footer-links" aria-label="Footer">
-            <div className="footer-link-group">
-              <p className="footer-heading">Udforsk</p>
-              <Link to="/">Events</Link>
-              <Link to="/om">Om Mellemrum</Link>
-            </div>
-            <div className="footer-link-group">
-              <p className="footer-heading">For arrangører</p>
-              <Link to="/tilmeldinger">Se tilmeldinger</Link>
-              <a href="mailto:hej@mellemrum.dk">Kontakt os</a>
-            </div>
-          </nav>
-        </div>
-        <div className="footer-bottom">
-          <p className="footer-meta">© 2025 Mellemrum</p>
-          <p>Aarhus, Danmark</p>
-        </div>
-      </footer>
     </>
   );
 }

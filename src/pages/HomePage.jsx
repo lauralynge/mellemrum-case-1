@@ -49,7 +49,8 @@ export default function HomePage() {
         <p className="eyebrow">Kultur i Aarhus</p>
         <h1>Find plads til noget nyt.</h1>
         <p className="hero-copy">
-          Koncerter, talks og workshops samlet ét sted. Find dit næste event, og tilmeld dig på få minutter.
+          Koncerter, talks og workshops samlet ét sted. Find dit næste event, og
+          tilmeld dig på få minutter.
         </p>
         <a className="hero-link" href="#events">
           Se kommende events ↓
@@ -77,7 +78,10 @@ export default function HomePage() {
           </label>
           <label>
             Kategori
-            <select value={category} onChange={(event) => setCategory(event.target.value)}>
+            <select
+              value={category}
+              onChange={(event) => setCategory(event.target.value)}
+            >
               {categories.map((item) => (
                 <option key={item}>{item}</option>
               ))}
@@ -105,32 +109,6 @@ export default function HomePage() {
           ))}
         </section>
       </main>
-      <footer className="site-footer">
-        <div className="footer-top">
-          <div className="footer-intro">
-            <p className="footer-brand">
-              mellemrum<span>.</span>
-            </p>
-            <p>Udvalgte kulturoplevelser og nye perspektiver på Aarhus.</p>
-          </div>
-          <nav className="footer-links" aria-label="Footer">
-            <div className="footer-link-group">
-              <p className="footer-heading">Udforsk</p>
-              <Link to="/">Events</Link>
-              <Link to="/om">Om Mellemrum</Link>
-            </div>
-            <div className="footer-link-group">
-              <p className="footer-heading">For arrangører</p>
-              <Link to="/tilmeldinger">Se tilmeldinger</Link>
-              <a href="mailto:hej@mellemrum.dk">Kontakt os</a>
-            </div>
-          </nav>
-        </div>
-        <div className="footer-bottom">
-          <p className="footer-meta">© 2026 Mellemrum</p>
-          <p>Aarhus, Danmark</p>
-        </div>
-      </footer>
     </>
   );
 }

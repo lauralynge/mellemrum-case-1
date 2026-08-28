@@ -108,12 +108,6 @@ select:focus {
   outline: none;
 }
 
-.event-grid {
-  display: grid;
-  gap: 1.5rem;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-}
-
 .event-card {
   background: white;
   border: 1px solid var(--line);
@@ -598,10 +592,6 @@ select:focus {
 }
 
 @media (max-width: 900px) {
-  .event-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
   .event-detail,
   .signup-panel {
     grid-template-columns: 1fr;
@@ -627,7 +617,6 @@ select:focus {
     flex-direction: column;
   }
 
-  .event-grid,
   .filters,
   .about-audience-split,
   .about-flow-list {

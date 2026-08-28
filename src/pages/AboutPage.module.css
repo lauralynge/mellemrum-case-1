@@ -1,0 +1,263 @@
+.aboutPage {
+  display: grid;
+  gap: clamp(5rem, 9vw, 8rem);
+  max-width: none;
+  padding: clamp(4rem, 8vw, 8rem) var(--content-edge);
+}
+
+.aboutPage h2 {
+  font-size: clamp(2.6rem, 5vw, 5rem);
+  letter-spacing: -0.06em;
+  line-height: 0.95;
+  margin: 0;
+}
+
+.aboutPage h3 {
+  font-size: clamp(1.8rem, 3vw, 3rem);
+  letter-spacing: -0.045em;
+  line-height: 1;
+  margin: 0;
+}
+
+.aboutPage p {
+  color: #4f5c57;
+  font-size: 1.08rem;
+  line-height: 1.7;
+}
+
+/* INTRO SECTION */
+.aboutIntro {
+  display: grid;
+  gap: clamp(3rem, 7vw, 7rem);
+  grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.75fr);
+}
+
+.aboutIntroCopy {
+  border-top: 1px solid var(--line);
+  padding-top: 1.5rem;
+}
+
+.aboutIntroCopy p {
+  margin: 0 0 1.5rem;
+}
+
+/* AUDIENCES */
+.aboutAudiences {
+  background: var(--green);
+  border-radius: 18px;
+  color: white;
+  overflow: hidden;
+}
+
+.aboutSectionHeading {
+  padding: clamp(2rem, 5vw, 4.5rem);
+}
+
+.aboutAudiences .aboutSectionHeading h2 {
+  max-width: 13ch;
+}
+
+.aboutAudienceSplit {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.aboutAudienceSplit article {
+  display: flex;
+  flex-direction: column;
+  min-height: 340px;
+  padding: clamp(2rem, 5vw, 4.5rem);
+}
+
+.primaryAudience {
+  background: #225f50;
+}
+
+.organizerAudience {
+  background: var(--lime);
+  color: var(--green);
+}
+
+.aboutAudienceSplit span {
+  font-size: 0.75rem;
+  font-weight: 850;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.primaryAudience span {
+  color: var(--lime);
+}
+
+.organizerAudience span {
+  color: #355048;
+}
+
+.aboutAudienceSplit h3 {
+  margin-top: auto;
+  max-width: 12ch;
+}
+
+.aboutAudienceSplit p {
+  color: inherit;
+  margin: 1.25rem 0;
+  max-width: 32rem;
+}
+
+.aboutAudienceSplit a {
+  align-self: flex-start;
+  font-weight: 800;
+  text-decoration-color: currentColor;
+  text-underline-offset: 0.35rem;
+}
+
+
+/* FLOW SECTION */
+.aboutFlowSection .aboutSectionHeading {
+  padding: 0;
+}
+
+.aboutFlowList {
+  counter-reset: flow;
+  display: grid;
+  gap: 0;
+  grid-template-columns: repeat(3, 1fr);
+  list-style: none;
+  margin: clamp(2.5rem, 5vw, 4.5rem) 0 0;
+  padding: 0;
+}
+
+.aboutFlowList li {
+  border-top: 5px solid var(--green);
+  min-height: 260px;
+  padding: 1.6rem clamp(1rem, 3vw, 2.5rem) 0 0;
+}
+
+.aboutFlowList li:nth-child(2) {
+  border-color: #2f695a;
+}
+
+.aboutFlowList li:nth-child(3) {
+  border-color: var(--lime);
+}
+
+.aboutFlowList span {
+  color: #a5412c;
+  display: block;
+  margin-bottom: 3.5rem;
+}
+
+.aboutFlowList strong {
+  display: block;
+  font-size: clamp(1.4rem, 2.5vw, 2rem);
+  letter-spacing: -0.035em;
+  line-height: 1.1;
+}
+
+.aboutFlowList p {
+  margin-bottom: 0;
+  max-width: 22rem;
+}
+
+/* CITY SECTION */
+.aboutCity {
+  align-items: stretch;
+  background: var(--cream);
+  border-radius: 18px;
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(320px, 0.75fr);
+  overflow: hidden;
+}
+
+.aboutCityFigure {
+  min-height: 620px;
+  margin: 0;
+  position: relative;
+}
+
+.aboutCityFigure img {
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+.aboutCityCaption {
+  background: var(--lime);
+  bottom: 0;
+  color: var(--green);
+  font-size: 0.78rem;
+  font-weight: 800;
+  left: 0;
+  letter-spacing: 0.08em;
+  padding: 0.8rem 1rem;
+  position: absolute;
+  text-transform: uppercase;
+}
+
+.aboutCityContent {
+  align-content: center;
+  display: grid;
+  padding: clamp(2.5rem, 6vw, 6rem);
+}
+
+.aboutCityContent p:not(.eyebrow) {
+  font-size: clamp(1.1rem, 2vw, 1.35rem);
+  margin: 1.75rem 0;
+}
+
+.aboutCta {
+  background: var(--green);
+  border-radius: 999px;
+  color: white;
+  padding: 0.85rem 1.15rem;
+  text-decoration: none;
+}
+
+/* MEDIA QUERIES */
+@media (max-width: 900px) {
+  .aboutIntro,
+  .aboutCity {
+    grid-template-columns: 1fr;
+  }
+
+  .aboutCityFigure {
+    min-height: 480px;
+  }
+}
+
+@media (max-width: 620px) {
+  .aboutPage {
+    gap: 4.5rem;
+  }
+
+  .aboutAudiences,
+  .aboutCity {
+    border-radius: 14px;
+  }
+
+  .aboutAudienceSplit {
+    grid-template-columns: 1fr;
+  }
+
+  .aboutAudienceSplit article {
+    min-height: 300px;
+  }
+
+  .aboutFlowList {
+    grid-template-columns: 1fr;
+  }
+
+  .aboutFlowList li {
+    min-height: 0;
+    padding-bottom: 2rem;
+  }
+
+  .aboutFlowList span {
+    margin-bottom: 2rem;
+  }
+
+  .aboutCityFigure {
+    min-height: 400px;
+  }
+}

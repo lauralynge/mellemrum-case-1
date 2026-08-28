@@ -1,5 +1,6 @@
 import { Link } from "react-router";
 import Hero from "../components/Hero";
+import styles from "./AboutPage.module.css";
 
 export default function AboutPage() {
   return (
@@ -12,15 +13,19 @@ export default function AboutPage() {
         backgroundImage="https://images.unsplash.com/photo-1553376482-e96b68bd1e11?q=80&w=2400&auto=format&fit=crop&ixlib=rb-4.1.0"
       />
 
-      <main className="about-page">
-        <section className="about-intro" aria-labelledby="about-intro-title">
+      <main className={styles.aboutPage}>
+        <section
+          className={styles.aboutIntro}
+          aria-labelledby="about-intro-title"
+        >
           <div>
-            <p className="eyebrow dark">Idéen</p>
+            <p className="eyebrowDark">Idéen</p>
             <h2 id="about-intro-title">
               En enkel vej til det, der sker tæt på.
             </h2>
           </div>
-          <div className="about-intro-copy">
+
+          <div className={styles.aboutIntroCopy}>
             <p className="lead">
               Mellemrum samler koncerter, talks, workshops og fællesskaber, så
               du lettere kan opdage noget, du ikke allerede kendte.
@@ -33,17 +38,18 @@ export default function AboutPage() {
         </section>
 
         <section
-          className="about-audiences"
+          className={styles.aboutAudiences}
           aria-labelledby="about-audiences-title"
         >
-          <div className="about-section-heading">
+          <div className={styles.aboutSectionHeading}>
             <p className="eyebrow">Målgrupper</p>
             <h2 id="about-audiences-title">
               Mellemrum forbinder oplevelser med mennesker.
             </h2>
           </div>
-          <div className="about-audience-split">
-            <article>
+
+          <div className={styles.aboutAudienceSplit}>
+            <article className={styles.primaryAudience}>
               <span>Primær målgruppe</span>
               <h3>For dig, der vil opdage byen</h3>
               <p>
@@ -52,7 +58,8 @@ export default function AboutPage() {
               </p>
               <Link to="/">Udforsk kommende events →</Link>
             </article>
-            <article>
+
+            <article className={styles.organizerAudience}>
               <span>For arrangører</span>
               <h3>Gør oplevelsen synlig</h3>
               <p>
@@ -65,14 +72,15 @@ export default function AboutPage() {
         </section>
 
         <section
-          className="about-flow-section"
+          className={styles.aboutFlowSection}
           aria-labelledby="about-flow-title"
         >
-          <div className="about-section-heading">
-            <p className="eyebrow dark">Sådan hænger det sammen</p>
+          <div className={styles.aboutSectionHeading}>
+            <p className="eyebrowDark">Sådan hænger det sammen</p>
             <h2 id="about-flow-title">Fra idé til plads i kalenderen.</h2>
           </div>
-          <ol className="about-flow-list">
+
+          <ol className={styles.aboutFlowList}>
             <li>
               <span>01</span>
               <strong>Arrangører deler events</strong>
@@ -91,22 +99,28 @@ export default function AboutPage() {
           </ol>
         </section>
 
-        <section className="about-city" aria-labelledby="about-city-title">
-          <figure>
+        <section
+          className={styles.aboutCity}
+          aria-labelledby="about-city-title"
+        >
+          <figure className={styles.aboutCityFigure}>
             <img
               src="https://images.unsplash.com/photo-1532370778713-1400f3d62094?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.1.0"
               alt="Moderne arkitektur med lyse facader og turkise altaner"
             />
-            <figcaption>Byrum, arkitektur og nye perspektiver.</figcaption>
+            <figcaption className={styles.aboutCityCaption}>
+              Byrum, arkitektur og nye perspektiver.
+            </figcaption>
           </figure>
-          <div>
-            <p className="eyebrow dark">Aarhus tæt på</p>
+
+          <div className={styles.aboutCityContent}>
+            <p className="eyebrowDark">Aarhus tæt på</p>
             <h2 id="about-city-title">Find plads til noget nyt.</h2>
             <p>
               Mellemrum peger på steder, idéer og fællesskaber på tværs af byen
               — fra små scener til store tanker.
             </p>
-            <Link className="about-cta" to="/">
+            <Link className={styles.aboutCta} to="/">
               Se kommende events →
             </Link>
           </div>

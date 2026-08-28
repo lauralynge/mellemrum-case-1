@@ -1,18 +1,21 @@
+import styles from "./EventDetail.module.css";
+
 export default function EventDetail({ event }) {
   const date = new Date(event.date);
 
   return (
-    <section className="event-detail">
-      <img src={event.image} alt="" />
+    <section className={styles.eventDetail}>
+      <img src={event.image} alt="" className={styles.image} />
 
-      <div className="event-detail-content">
-        <p className="event-category">{event.category}</p>
+      <div className={styles.content}>
+        <p className={styles.category}>{event.category}</p>
 
-        <h1>{event.title}</h1>
+        <h1 className={styles.title}>{event.title}</h1>
 
+        {/* lead er global */}
         <p className="lead">{event.summary}</p>
 
-        <div className="detail-list">
+        <div className={styles.detailList}>
           <p>
             <strong>Dato</strong>
             {date.toLocaleDateString("da-DK", {

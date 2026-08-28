@@ -622,16 +622,9 @@ select:focus {
 }
 
 @media (max-width: 620px) {
-  .site-nav,
   .section-heading {
     align-items: flex-start;
     flex-direction: column;
-  }
-
-  .site-nav {
-    gap: 0.7rem;
-    padding-bottom: 0.9rem;
-    padding-top: 0.9rem;
   }
 
   .event-grid,

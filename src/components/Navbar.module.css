@@ -49,3 +49,14 @@
   background: rgba(255, 255, 255, 0.1);
   color: white;
 }
+
+/* Responsive: stak logo og links lodret på mindre skærme */
+@media (max-width: 620px) {
+  .siteNav {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.7rem;
+    padding-bottom: 0.9rem;
+    padding-top: 0.9rem;
+  }
+}

@@ -1,3 +1,5 @@
+import styles from "./Hero.module.css";
+
 export default function Hero({
   eyebrow,
   title,
@@ -5,18 +7,20 @@ export default function Hero({
   backgroundImage,
   linkText,
   linkHref,
+  dark = false,
 }) {
   return (
     <header
-      className="hero"
+      className={styles.hero}
       style={{ backgroundImage: `url(${backgroundImage})` }}
     >
-      <p className="hero-eyebrow">{eyebrow}</p>
-      <h1 className="hero-title">{title}</h1>
-      <p className="hero-copy">{text}</p>
+      {/* Global utility-klasse, da eyebrow/dark genbruges på tværs af flere komponenter */}
+      <p className={`eyebrow${dark ? " eyebrowDark" : ""}`}>{eyebrow}</p>
+      <h1 className={styles.heroTitle}>{title}</h1>
+      <p className={styles.heroCopy}>{text}</p>
 
       {linkText && linkHref && (
-        <a className="hero-link" href={linkHref}>
+        <a className={styles.heroLink} href={linkHref}>
           {linkText}
         </a>
       )}

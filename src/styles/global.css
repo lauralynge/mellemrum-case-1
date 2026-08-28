@@ -45,6 +45,16 @@ main {
   color: var(--green);
 }
 
+/* form label styling (RegistrationForm og Filter)*/
+.formLabel {
+  display: grid;
+  font-size: 0.78rem;
+  font-weight: 800;
+  gap: 0.45rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
 .section-heading {
   align-items: end;
   display: flex;
@@ -53,8 +63,7 @@ main {
   margin-bottom: 2.5rem;
 }
 
-.section-heading h2,
-.signup-panel h2 {
+.section-heading h2 {
   font-size: clamp(2.2rem, 4vw, 4rem);
   letter-spacing: -0.055em;
   line-height: 1;
@@ -78,8 +87,7 @@ main {
   padding: 1rem;
 }
 
-.filters label,
-.signup-panel label {
+.filters label {
   display: grid;
   font-size: 0.78rem;
   font-weight: 800;
@@ -390,45 +398,6 @@ select:focus {
   grid-template-columns: 5rem 1fr;
 }
 
-.signup-panel {
-  background: var(--lime);
-  border-radius: 18px;
-  display: grid;
-  gap: 4rem;
-  grid-template-columns: 1fr 1fr;
-  margin-top: 2rem;
-  padding: clamp(2rem, 5vw, 5rem);
-}
-
-.signup-panel form {
-  display: grid;
-  gap: 0.65rem;
-}
-
-.signup-panel form > span {
-  font-size: 0.78rem;
-  font-weight: 800;
-  letter-spacing: 0.08em;
-  margin-top: 0.3rem;
-  text-transform: uppercase;
-}
-
-.signup-panel button {
-  background: var(--green);
-  border: 0;
-  color: white;
-  cursor: pointer;
-  font-weight: 800;
-  margin-top: 0.7rem;
-  min-height: 50px;
-  padding: 0.8rem 1.1rem;
-}
-
-.signup-panel button:disabled {
-  cursor: wait;
-  opacity: 0.65;
-}
-
 .form-message {
   background: rgba(255, 255, 255, 0.55);
   margin: 0.5rem 0 0;
@@ -509,8 +478,7 @@ select:focus {
 }
 
 @media (max-width: 900px) {
-  .event-detail,
-  .signup-panel {
+  .event-detail {
     grid-template-columns: 1fr;
   }
 

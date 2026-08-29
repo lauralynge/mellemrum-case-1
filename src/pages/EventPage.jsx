@@ -3,12 +3,7 @@ import { Link, useParams } from "react-router";
 import EventDetail from "../components/EventDetail";
 import RegistrationForm from "../components/RegistrationForm";
 import styles from "./EventPage.module.css";
-
-const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL;
-const headers = {
-  apikey: import.meta.env.VITE_SUPABASE_APIKEY,
-  "Content-Type": "application/json",
-};
+import { getEventById } from "../services/events";
 
 export default function EventPage() {
   const { eventId } = useParams();
@@ -16,17 +11,9 @@ export default function EventPage() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
 
-  useEffect(() => {
-    async function getEvent() {
-      const response = await fetch(`${SUPABASE_URL}/events?id=eq.${eventId}`, {
-        headers,
-      });
-      const data = await response.json();
-      setEvent(data[0]);
-    }
-
-    getEvent();
-  }, [eventId]);
+useEffect(() => {
+  getEventById(eventId).then(setEvent);
+}, [eventId]);
 
   async function handleSubmit(eventSubmit) {
     eventSubmit.preventDefault();

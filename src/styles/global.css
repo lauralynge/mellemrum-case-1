@@ -61,6 +61,29 @@ main {
   font-size: clamp(1.25rem, 2vw, 1.7rem) !important;
 }
 
+/* Global baseline-styling for alle input/select-felter på tværs af sitet.
+   Bevidst IKKE flyttet til et modul – bruges i flere komponenter (Filters, RegistrationForm m.fl.) */
+
+input,
+select {
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: var(--ink);
+  min-height: 48px;
+  padding: 0.75rem 0.9rem;
+  transition:
+    border-color 160ms ease,
+    box-shadow 160ms ease;
+}
+
+input:focus,
+select:focus {
+  border-color: var(--green);
+  box-shadow: 0 0 0 3px rgba(23, 63, 53, 0.12);
+  outline: none;
+}
+
 /**********************************/
 /*  SKAL OPDATERES HERFRA OG NED  */
 /**********************************/
@@ -83,26 +106,6 @@ main {
   color: #53605b;
   margin: 0;
   max-width: 30rem;
-}
-
-input,
-select {
-  background: white;
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  color: var(--ink);
-  min-height: 48px;
-  padding: 0.75rem 0.9rem;
-  transition:
-    border-color 160ms ease,
-    box-shadow 160ms ease;
-}
-
-input:focus,
-select:focus {
-  border-color: var(--green);
-  box-shadow: 0 0 0 3px rgba(23, 63, 53, 0.12);
-  outline: none;
 }
 
 .message {
@@ -129,38 +132,9 @@ select:focus {
   margin: 0;
 }
 
-.not-found-title {
-  font-size: 5rem;
-}
-
-.not-found {
-  text-align: center;
-}
-
-.not-found-link {
-  background: var(--green);
-  color: white;
-  display: inline-block;
-  margin-top: 1rem;
-  padding: 0.75rem 1rem;
-  text-decoration: none;
-}
-
 @media (max-width: 620px) {
   .section-heading {
     align-items: flex-start;
     flex-direction: column;
-  }
-
-  .filters {
-    grid-template-columns: 1fr;
-  }
-
-  .registration-row {
-    grid-template-columns: 1fr;
-  }
-
-  .registration-labels {
-    display: none;
   }
 }

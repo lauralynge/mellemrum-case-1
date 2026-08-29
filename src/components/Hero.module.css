@@ -1,0 +1,67 @@
+/* Hero styling */
+.hero {
+  position: relative;
+  min-height: 64vh;
+  padding: clamp(5rem, 10vw, 9rem) var(--content-edge) 5rem;
+  color: white;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start; /* ← FIXER BREDDEN */
+
+  background-size: cover;
+  background-position: center;
+}
+
+/* Gradient overlay */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(12, 42, 34, 0.92) 0%,
+    rgba(12, 42, 34, 0.7) 52%,
+    rgba(12, 42, 34, 0.28) 100%
+  );
+  z-index: 0;
+}
+
+/* Content above gradient */
+.hero > * {
+  position: relative;
+  z-index: 1;
+  align-items: flex-start;
+}
+
+.heroTitle {
+  font-size: clamp(3.2rem, 8vw, 7.5rem);
+  letter-spacing: -0.075em;
+  line-height: 0.9;
+  margin: 0;
+  max-width: 12ch;
+}
+
+.heroCopy {
+  color: rgba(255, 255, 255, 0.76);
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  line-height: 1.55;
+  margin: 2rem 0;
+  max-width: 36rem;
+}
+
+.heroLink {
+  background: var(--lime);
+  border-radius: 999px;
+  color: var(--green);
+  display: inline-block;
+  font-weight: 700;
+  padding: 0.75rem 1.1rem;
+  text-decoration: none;
+  transition: transform 160ms ease;
+}
+
+.heroLink:hover {
+  transform: translateY(-2px);
+}

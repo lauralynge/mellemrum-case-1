@@ -1,0 +1,16 @@
+.notFoundTitle {
+  font-size: 5rem;
+}
+
+.notFound {
+  text-align: center;
+}
+
+.notFoundLink {
+  background: var(--green);
+  color: white;
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.75rem 1rem;
+  text-decoration: none;
+}

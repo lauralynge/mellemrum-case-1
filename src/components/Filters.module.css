@@ -1,0 +1,17 @@
+.filters {
+  background: rgba(255, 255, 255, 0.62);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 2fr 1fr;
+  margin-bottom: 2.5rem;
+  padding: 1rem;
+}
+
+/* Responsive: stak felterne i én kolonne på mobil */
+@media (max-width: 620px) {
+  .filters {
+    grid-template-columns: 1fr;
+  }
+}

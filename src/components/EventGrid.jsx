@@ -1,8 +1,9 @@
+import styles from "./EventGrid.module.css";
 import EventCard from "./EventCard";
 
 export default function EventGrid({ events, formatEventDate }) {
   return (
-    <section className="event-grid">
+    <section className={styles.eventGrid}>
       {events.map((event) => (
         <EventCard
           key={event.id}

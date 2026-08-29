@@ -1,14 +1,15 @@
 import { Link } from "react-router";
+import styles from "./NotFoundPage.module.css";
 
 export default function NotFoundPage() {
   return (
     <>
       <header>
-        <h1 className="not-found-title">404</h1>
+        <h1 className={styles.notFoundTitle}>404</h1>
       </header>
-      <main className="not-found">
+      <main className={styles.notFound}>
         <p>Siden, du leder efter, findes ikke.</p>
-        <Link to="/" className="not-found-link">
+        <Link to="/" className={styles.notFoundLink}>
           Gå til forsiden
         </Link>
       </main>

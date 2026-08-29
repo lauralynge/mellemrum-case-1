@@ -1,0 +1,18 @@
+.eventGrid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+/* Responsive: 2 kolonner på tablet, 1 kolonne på mobil */
+@media (max-width: 900px) {
+  .eventGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 620px) {
+  .eventGrid {
+    grid-template-columns: 1fr;
+  }
+}

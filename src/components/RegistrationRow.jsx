@@ -1,6 +1,8 @@
+import styles from "./RegistrationRow.module.css";
+
 export default function RegistrationRow({ registration }) {
   return (
-    <div className="registration-row">
+    <div className={styles.registrationRow}>
       <div>
         <strong>{registration.name}</strong>
         <small>{registration.email}</small>
@@ -12,7 +14,7 @@ export default function RegistrationRow({ registration }) {
         {new Date(registration.eventDate).toLocaleDateString("da-DK")}
       </span>
 
-      <span className="status">{registration.status}</span>
+      <span className={styles.status}>{registration.status}</span>
     </div>
   );
 }

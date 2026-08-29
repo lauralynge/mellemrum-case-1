@@ -1,0 +1,9 @@
+.eventPage {
+  max-width: 1280px;
+}
+
+.backLink {
+  display: inline-block;
+  font-size: 0.9rem;
+  margin-bottom: 2rem;
+}

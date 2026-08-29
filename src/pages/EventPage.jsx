@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router";
 import EventDetail from "../components/EventDetail";
 import RegistrationForm from "../components/RegistrationForm";
+import styles from "./EventPage.module.css";
 
 const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL;
 const headers = {
@@ -38,8 +39,8 @@ export default function EventPage() {
 
   return (
     <>
-      <main className="event-page">
-        <Link className="back-link" to="/">
+      <main className={styles.eventPage}>
+        <Link className={styles.backLink} to="/">
           ← Alle events
         </Link>
 

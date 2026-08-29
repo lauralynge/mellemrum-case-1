@@ -1,0 +1,39 @@
+.registrationRow {
+  align-items: center;
+  border-bottom: 1px solid var(--line);
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1.2fr 1.5fr 0.7fr 0.5fr;
+  padding: 1rem 1.2rem;
+}
+
+.registrationRow:last-child {
+  border-bottom: 0;
+}
+
+.registrationRow strong,
+.registrationRow small {
+  display: block;
+}
+
+.registrationRow small {
+  color: #65706c;
+  margin-top: 0.2rem;
+}
+
+.status {
+  background: #dff3cc;
+  border-radius: 999px;
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 750;
+  padding: 0.35rem 0.6rem;
+  text-align: center;
+}
+
+/* Responsive: stak felterne i én kolonne på mobil */
+@media (max-width: 620px) {
+  .registrationRow {
+    grid-template-columns: 1fr;
+  }
+}

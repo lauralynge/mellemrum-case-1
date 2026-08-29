@@ -1,3 +1,5 @@
+import styles from "./Filters.module.css";
+
 export default function Filters({
   search,
   setSearch,
@@ -6,8 +8,8 @@ export default function Filters({
   categories,
 }) {
   return (
-    <section className="filters">
-      <label>
+    <section className={styles.filters}>
+      <label className="formLabel">
         Søg
         <input
           type="search"
@@ -17,7 +19,7 @@ export default function Filters({
         />
       </label>
 
-      <label>
+      <label className="formLabel">
         Kategori
         <select
           value={category}
@@ -31,5 +33,3 @@ export default function Filters({
     </section>
   );
 }
-
-

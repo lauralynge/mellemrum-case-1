@@ -3,6 +3,7 @@ import { getRegistrations } from "../services/registrations";
 import RegistrationRow from "../components/RegistrationRow";
 import rowStyles from "../components/RegistrationRow.module.css";
 import styles from "./RegistrationsPage.module.css";
+import ErrorMessage from "../components/ErrorMessage";
 
 export default function RegistrationsPage() {
   const [registrations, setRegistrations] = useState([]);
@@ -29,7 +30,7 @@ export default function RegistrationsPage() {
       </header>
       <main>
         {/* Fejlmeddelelse */}
-        {error && <p role="alert">{error}</p>}
+        {error && <ErrorMessage>{error}</ErrorMessage>}
 
         <div className={styles.registrationList}>
           <div

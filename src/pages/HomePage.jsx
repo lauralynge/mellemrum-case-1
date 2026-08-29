@@ -4,6 +4,7 @@ import EventGrid from "../components/EventGrid";
 import Filters from "../components/Filters";
 import styles from "./HomePage.module.css";
 import { getEvents } from "../services/events";
+import ErrorMessage from "../components/ErrorMessage";
 
 export default function HomePage() {
   const [events, setEvents] = useState([]);
@@ -64,7 +65,7 @@ export default function HomePage() {
         </section>
 
         {/* Fejlmeddelelse */}
-        {error && <p role="alert">{error}</p>}
+        {error && <ErrorMessage>{error}</ErrorMessage>}
 
         {/*Filter section*/}
         <Filters

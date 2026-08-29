@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router";
 import EventDetail from "../components/EventDetail";
 import RegistrationForm from "../components/RegistrationForm";
+import ErrorMessage from "../components/ErrorMessage";
 import styles from "./EventPage.module.css";
 import { getEventById } from "../services/events";
 
@@ -24,7 +25,11 @@ export default function EventPage() {
   }
 
   if (error) {
-    return <p role="alert">{error}</p>;
+    return (
+      <main className={styles.eventPage}>
+        <ErrorMessage>{error}</ErrorMessage>
+      </main>
+    );
   }
 
   if (!event) {

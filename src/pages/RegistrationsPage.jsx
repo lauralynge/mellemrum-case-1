@@ -32,22 +32,24 @@ export default function RegistrationsPage() {
         {/* Fejlmeddelelse */}
         {error && <ErrorMessage>{error}</ErrorMessage>}
 
-        <div className={styles.registrationList}>
-          <div
-            className={`${rowStyles.registrationRow} ${styles.registrationLabels}`}
-          >
-            <span>Navn</span>
-            <span>Event</span>
-            <span>Dato</span>
-            <span>Status</span>
+        {!error && (
+          <div className={styles.registrationList}>
+            <div
+              className={`${rowStyles.registrationRow} ${styles.registrationLabels}`}
+            >
+              <span>Navn</span>
+              <span>Event</span>
+              <span>Dato</span>
+              <span>Status</span>
+            </div>
+            {registrations.map((registration) => (
+              <RegistrationRow
+                key={registration.id}
+                registration={registration}
+              />
+            ))}
           </div>
-          {registrations.map((registration) => (
-            <RegistrationRow
-              key={registration.id}
-              registration={registration}
-            />
-          ))}
-        </div>
+        )}
       </main>
     </>
   );

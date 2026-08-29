@@ -1,0 +1,28 @@
+.sectionHeading {
+  align-items: end;
+  display: flex;
+  gap: 3rem;
+  justify-content: space-between;
+  margin-bottom: 2.5rem;
+}
+
+.sectionHeading h2 {
+  font-size: clamp(2.2rem, 4vw, 4rem);
+  letter-spacing: -0.055em;
+  line-height: 1;
+  margin: 0;
+}
+
+.sectionHeading > p {
+  color: #53605b;
+  margin: 0;
+  max-width: 30rem;
+}
+
+/* Responsive: stak overskrift og tekst lodret på mobil */
+@media (max-width: 620px) {
+  .sectionHeading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}

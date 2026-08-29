@@ -3,6 +3,7 @@ import { Link } from "react-router";
 import Hero from "../components/Hero";
 import EventGrid from "../components/EventGrid";
 import Filters from "../components/Filters";
+import styles from "./HomePage.module.css";
 
 const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL;
 const headers = {
@@ -65,9 +66,9 @@ export default function HomePage() {
       />
       {/*Title section*/}
       <main id="events">
-        <section className="section-heading">
+        <section className={styles.sectionHeading}>
           <div>
-            <p className="eyebrow dark">Det sker</p>
+            <p className="eyebrow eyebrowDark">Det sker</p>
             <h2>Kommende events</h2>
           </div>
           <p>Kuraterede oplevelser i byen – fra små scener til store idéer.</p>

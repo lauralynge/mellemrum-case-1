@@ -31,7 +31,7 @@ main {
   padding: clamp(3rem, 6vw, 6rem) var(--page-gutter);
 }
 
-/* Eyebrow styling */
+/* Eyebrow styling – delt på tværs af flere komponenter/sider */
 .eyebrow {
   color: var(--lime);
   font-size: 0.78rem;
@@ -55,7 +55,7 @@ main {
   text-transform: uppercase;
 }
 
-/* lead styling */
+/* Delt fremhævet tekststil, brugt i både EventDetail og AboutPage */
 .lead {
   color: var(--ink) !important;
   font-size: clamp(1.25rem, 2vw, 1.7rem) !important;
@@ -82,46 +82,4 @@ select:focus {
   border-color: var(--green);
   box-shadow: 0 0 0 3px rgba(23, 63, 53, 0.12);
   outline: none;
-}
-
-/**********************************/
-/*  SKAL OPDATERES HERFRA OG NED  */
-/**********************************/
-.section-heading {
-  align-items: end;
-  display: flex;
-  gap: 3rem;
-  justify-content: space-between;
-  margin-bottom: 2.5rem;
-}
-
-.section-heading h2 {
-  font-size: clamp(2.2rem, 4vw, 4rem);
-  letter-spacing: -0.055em;
-  line-height: 1;
-  margin: 0;
-}
-
-.section-heading > p {
-  color: #53605b;
-  margin: 0;
-  max-width: 30rem;
-}
-
-.message {
-  background: var(--cream);
-  padding: 1rem;
-}
-
-.form-message {
-  background: rgba(255, 255, 255, 0.55);
-  margin: 0.5rem 0 0;
-  padding: 0.8rem;
-}
-
-@media (max-width: 620px) {
-  .section-heading {
-    align-items: flex-start;
-    flex-direction: column;
-  }
 }

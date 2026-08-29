@@ -7,12 +7,17 @@ import styles from "./RegistrationsPage.module.css";
 export default function RegistrationsPage() {
   const [registrations, setRegistrations] = useState([]);
   const [registrationCount, setRegistrationCount] = useState(0);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    getRegistrations().then((data) => {
-      setRegistrations(data);
-      setRegistrationCount(data.length);
-    });
+    getRegistrations()
+      .then((data) => {
+        setRegistrations(data);
+        setRegistrationCount(data.length);
+      })
+      .catch(() =>
+        setError("Kunne ikke hente tilmeldinger. Prøv igen senere."),
+      );
   }, []);
 
   return (
@@ -23,6 +28,9 @@ export default function RegistrationsPage() {
         <p>{registrationCount} tilmeldinger i alt</p>
       </header>
       <main>
+        {/* Fejlmeddelelse */}
+        {error && <p role="alert">{error}</p>}
+
         <div className={styles.registrationList}>
           <div
             className={`${rowStyles.registrationRow} ${styles.registrationLabels}`}

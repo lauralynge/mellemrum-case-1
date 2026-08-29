@@ -10,14 +10,21 @@ export default function EventPage() {
   const [event, setEvent] = useState(null);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [error, setError] = useState(null);
 
-useEffect(() => {
-  getEventById(eventId).then(setEvent);
-}, [eventId]);
+  useEffect(() => {
+    getEventById(eventId)
+      .then(setEvent)
+      .catch(() => setError("Kunne ikke hente eventet. Prøv igen senere."));
+  }, [eventId]);
 
   async function handleSubmit(eventSubmit) {
     eventSubmit.preventDefault();
     console.log({ name, email, event: event.title });
+  }
+
+  if (error) {
+    return <p role="alert">{error}</p>;
   }
 
   if (!event) {

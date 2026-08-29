@@ -9,9 +9,12 @@ export default function HomePage() {
   const [events, setEvents] = useState([]);
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState("Alle");
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    getEvents().then(setEvents);
+    getEvents()
+      .then(setEvents)
+      .catch(() => setError("Kunne ikke hente events. Prøv igen senere."));
   }, []);
 
   const categories = [
@@ -59,6 +62,9 @@ export default function HomePage() {
           </div>
           <p>Kuraterede oplevelser i byen – fra små scener til store idéer.</p>
         </section>
+
+        {/* Fejlmeddelelse */}
+        {error && <p role="alert">{error}</p>}
 
         {/*Filter section*/}
         <Filters

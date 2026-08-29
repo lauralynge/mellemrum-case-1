@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import RegistrationRow from "../components/RegistrationRow";
+import rowStyles from "../components/RegistrationRow.module.css";
+import styles from "./RegistrationsPage.module.css";
 
 const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL;
 const headers = {
@@ -27,14 +29,16 @@ export default function RegistrationsPage() {
 
   return (
     <>
-      <header className="admin-header">
+      <header className={styles.adminHeader}>
         <p className="eyebrow">Internt overblik</p>
         <h1>Tilmeldinger</h1>
         <p>{registrationCount} tilmeldinger i alt</p>
       </header>
       <main>
-        <div className="registration-list">
-          <div className="registration-row registration-labels">
+        <div className={styles.registrationList}>
+          <div
+            className={`${rowStyles.registrationRow} ${styles.registrationLabels}`}
+          >
             <span>Navn</span>
             <span>Event</span>
             <span>Dato</span>

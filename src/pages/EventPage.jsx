@@ -27,7 +27,12 @@ export default function EventPage() {
   if (error) {
     return (
       <main className={styles.eventPage}>
-        <ErrorMessage>{error}</ErrorMessage>
+        <div className={styles.errorState}>
+          <ErrorMessage>{error}</ErrorMessage>
+          <Link className={styles.backLink} to="/">
+            ← Alle events
+          </Link>
+        </div>
       </main>
     );
   }

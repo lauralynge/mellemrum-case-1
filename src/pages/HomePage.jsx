@@ -1,31 +1,21 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router";
 import Hero from "../components/Hero";
 import EventGrid from "../components/EventGrid";
 import Filters from "../components/Filters";
 import styles from "./HomePage.module.css";
-
-const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL;
-const headers = {
-  apikey: import.meta.env.VITE_SUPABASE_APIKEY,
-  "Content-Type": "application/json",
-};
+import { getEvents } from "../services/events";
+import ErrorMessage from "../components/ErrorMessage";
 
 export default function HomePage() {
   const [events, setEvents] = useState([]);
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState("Alle");
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    async function getEvents() {
-      const response = await fetch(`${SUPABASE_URL}/events?order=date.asc`, {
-        headers,
-      });
-      const data = await response.json();
-      setEvents(data);
-    }
-
-    getEvents();
+    getEvents()
+      .then(setEvents)
+      .catch(() => setError("Kunne ikke hente events. Prøv igen senere."));
   }, []);
 
   const categories = [
@@ -73,6 +63,9 @@ export default function HomePage() {
           </div>
           <p>Kuraterede oplevelser i byen – fra små scener til store idéer.</p>
         </section>
+
+        {/* Fejlmeddelelse */}
+        {error && <ErrorMessage>{error}</ErrorMessage>}
 
         {/*Filter section*/}
         <Filters

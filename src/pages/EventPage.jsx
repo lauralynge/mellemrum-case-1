@@ -2,35 +2,39 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router";
 import EventDetail from "../components/EventDetail";
 import RegistrationForm from "../components/RegistrationForm";
+import ErrorMessage from "../components/ErrorMessage";
 import styles from "./EventPage.module.css";
-
-const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL;
-const headers = {
-  apikey: import.meta.env.VITE_SUPABASE_APIKEY,
-  "Content-Type": "application/json",
-};
+import { getEventById } from "../services/events";
 
 export default function EventPage() {
   const { eventId } = useParams();
   const [event, setEvent] = useState(null);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    async function getEvent() {
-      const response = await fetch(`${SUPABASE_URL}/events?id=eq.${eventId}`, {
-        headers,
-      });
-      const data = await response.json();
-      setEvent(data[0]);
-    }
-
-    getEvent();
+    getEventById(eventId)
+      .then(setEvent)
+      .catch(() => setError("Kunne ikke hente eventet. Prøv igen senere."));
   }, [eventId]);
 
   async function handleSubmit(eventSubmit) {
     eventSubmit.preventDefault();
     console.log({ name, email, event: event.title });
+  }
+
+  if (error) {
+    return (
+      <main className={styles.eventPage}>
+        <div className={styles.errorState}>
+          <ErrorMessage>{error}</ErrorMessage>
+          <Link className={styles.backLink} to="/">
+            ← Alle events
+          </Link>
+        </div>
+      </main>
+    );
   }
 
   if (!event) {

@@ -4,11 +4,13 @@ import RegistrationRow from "../components/RegistrationRow";
 import rowStyles from "../components/RegistrationRow.module.css";
 import styles from "./RegistrationsPage.module.css";
 import ErrorMessage from "../components/ErrorMessage";
+import LoadingMessage from "../components/LoadingMessage";
 
 export default function RegistrationsPage() {
   const [registrations, setRegistrations] = useState([]);
   const [registrationCount, setRegistrationCount] = useState(0);
   const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     getRegistrations()
@@ -16,9 +18,8 @@ export default function RegistrationsPage() {
         setRegistrations(data);
         setRegistrationCount(data.length);
       })
-      .catch(() =>
-        setError("Kunne ikke hente tilmeldinger. Prøv igen senere."),
-      );
+      .catch(() => setError("Kunne ikke hente tilmeldinger. Prøv igen senere."))
+      .finally(() => setIsLoading(false));
   }, []);
 
   return (
@@ -29,10 +30,13 @@ export default function RegistrationsPage() {
         <p>{registrationCount} tilmeldinger i alt</p>
       </header>
       <main>
+        {/* Loading-tilstand */}
+        {isLoading && <LoadingMessage>Indlæser tilmeldinger...</LoadingMessage>}
+
         {/* Fejlmeddelelse */}
         {error && <ErrorMessage>{error}</ErrorMessage>}
 
-        {!error && (
+        {!isLoading && !error && (
           <div className={styles.registrationList}>
             <div
               className={`${rowStyles.registrationRow} ${styles.registrationLabels}`}

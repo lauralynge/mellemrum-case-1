@@ -5,17 +5,20 @@ import Filters from "../components/Filters";
 import styles from "./HomePage.module.css";
 import { getEvents } from "../services/events";
 import ErrorMessage from "../components/ErrorMessage";
+import LoadingMessage from "../components/LoadingMessage";
 
 export default function HomePage() {
   const [events, setEvents] = useState([]);
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState("Alle");
   const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     getEvents()
       .then(setEvents)
-      .catch(() => setError("Kunne ikke hente events. Prøv igen senere."));
+      .catch(() => setError("Kunne ikke hente events. Prøv igen senere."))
+      .finally(() => setIsLoading(false));
   }, []);
 
   const categories = [
@@ -75,6 +78,10 @@ export default function HomePage() {
           setCategory={setCategory}
           categories={categories}
         />
+
+        {/* Loading-tilstand */}
+        {isLoading && <LoadingMessage>Indlæser events...</LoadingMessage>}
+ 
         {/*EventGrid section med EventCard komponenter*/}
         <EventGrid events={filteredEvents} formatEventDate={formatEventDate} />
       </main>

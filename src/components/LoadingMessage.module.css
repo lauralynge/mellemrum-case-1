@@ -1,0 +1,8 @@
+.loadingMessage {
+  background: var(--cream);
+  border-radius: 10px;
+  color: var(--color-loading);
+  font-weight: 400;
+  margin: 1.5rem 0;
+  padding: 1rem 1.25rem;
+} 

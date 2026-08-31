@@ -27,32 +27,32 @@ export default function EventPage() {
       .finally(() => setIsLoading(false));
   }, [eventId]);
 
- async function handleSubmit(eventSubmit) {
-   eventSubmit.preventDefault();
-   setSubmitStatus(null);
+  async function handleSubmit(eventSubmit) {
+    eventSubmit.preventDefault();
+    setSubmitStatus(null);
 
-   try {
-     const alreadyRegistered = await checkExistingRegistration(
-       email,
-       Number(eventId),
-     );
+    try {
+      const alreadyRegistered = await checkExistingRegistration(
+        email,
+        Number(eventId),
+      );
 
-     if (alreadyRegistered) {
-       setSubmitStatus("duplicate");
-       return;
-     }
+      if (alreadyRegistered) {
+        setSubmitStatus("duplicate");
+        return;
+      }
 
-     await createRegistration({
-       name,
-       email,
-       eventId: Number(eventId),
-     });
-     setSubmitStatus("success");
-   } catch (error) {
-     console.error("Tilmelding fejlede:", error);
-     setSubmitStatus("error");
-   }
- }
+      await createRegistration({
+        name,
+        email,
+        eventId: Number(eventId),
+      });
+      setSubmitStatus("success");
+    } catch (error) {
+      console.error("Tilmelding fejlede:", error);
+      setSubmitStatus("error");
+    }
+  }
 
   if (isLoading) {
     return (
@@ -79,6 +79,18 @@ export default function EventPage() {
     return null;
   }
 
+  /* Format event date and time */
+  const eventDate = new Date(event.date);
+  const formattedEventDate = eventDate.toLocaleDateString("da-DK", {
+    weekday: "long",
+    day: "numeric",
+    month: "long",
+  });
+  const formattedEventTime = eventDate.toLocaleTimeString("da-DK", {
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+
   return (
     <>
       <main className={styles.eventPage}>
@@ -95,6 +107,8 @@ export default function EventPage() {
           setEmail={setEmail}
           onSubmit={handleSubmit}
           submitStatus={submitStatus}
+          eventTitle={event.title}
+          eventDateFormatted={`${formattedEventDate} kl. ${formattedEventTime}`}
         />
       </main>
     </>

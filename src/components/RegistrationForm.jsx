@@ -1,3 +1,4 @@
+import { Link } from "react-router";
 import styles from "./RegistrationForm.module.css";
 import ErrorMessage from "./ErrorMessage";
 
@@ -8,7 +9,26 @@ export default function RegistrationForm({
   setEmail,
   onSubmit,
   submitStatus,
+  eventTitle,
+  eventDateFormatted,
 }) {
+  if (submitStatus === "success") {
+    return (
+      <section className={styles.signupPanel}>
+        <div className={styles.confirmationFull}>
+          <p className={styles.confirmationTitle}>Din plads er reserveret</p>
+          <p className={styles.confirmationDetails}>
+            {eventTitle} <span className={styles.separator}>·</span>{" "}
+            {eventDateFormatted}
+          </p>
+          <Link to="/" className={styles.confirmationLink}>
+            Se andre events →
+          </Link>
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section className={styles.signupPanel}>
       <div>
@@ -34,11 +54,10 @@ export default function RegistrationForm({
 
         <button type="submit">Tilmeld mig</button>
 
-        {submitStatus === "success" && (
-          <p role="status">Du er nu tilmeldt eventet!</p>
-        )}
         {submitStatus === "duplicate" && (
-          <p role="status">Du er allerede tilmeldt dette event.</p>
+          <p className={styles.duplicateMessage} role="status">
+            Du er allerede tilmeldt dette event.
+          </p>
         )}
         {submitStatus === "error" && (
           <ErrorMessage>Noget gik galt. Prøv igen senere.</ErrorMessage>

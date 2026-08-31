@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
-import { getRegistrations } from "../services/registrations";
+import {
+  getRegistrations,
+  updateRegistrationStatus,
+} from "../services/registrations";
 import RegistrationRow from "../components/RegistrationRow";
 import rowStyles from "../components/RegistrationRow.module.css";
 import styles from "./RegistrationsPage.module.css";
@@ -21,6 +24,21 @@ export default function RegistrationsPage() {
       .catch(() => setError("Kunne ikke hente tilmeldinger. Prøv igen senere."))
       .finally(() => setIsLoading(false));
   }, []);
+
+  async function handleConfirm(id) {
+    try {
+      await updateRegistrationStatus(id, "Bekræftet");
+      setRegistrations((prev) =>
+        prev.map((registration) =>
+          registration.id === id
+            ? { ...registration, status: "Bekræftet" }
+            : registration,
+        ),
+      );
+    } catch (error) {
+      console.error("Kunne ikke bekræfte tilmelding:", error);
+    }
+  }
 
   return (
     <>
@@ -50,6 +68,7 @@ export default function RegistrationsPage() {
               <RegistrationRow
                 key={registration.id}
                 registration={registration}
+                onConfirm={handleConfirm}
               />
             ))}
           </div>

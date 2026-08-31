@@ -1,4 +1,5 @@
 import styles from "./RegistrationForm.module.css";
+import ErrorMessage from "./ErrorMessage";
 
 export default function RegistrationForm({
   name,
@@ -6,6 +7,7 @@ export default function RegistrationForm({
   setName,
   setEmail,
   onSubmit,
+  submitStatus,
 }) {
   return (
     <section className={styles.signupPanel}>
@@ -31,6 +33,16 @@ export default function RegistrationForm({
         </label>
 
         <button type="submit">Tilmeld mig</button>
+
+        {submitStatus === "success" && (
+          <p role="status">Du er nu tilmeldt eventet!</p>
+        )}
+        {submitStatus === "duplicate" && (
+          <p role="status">Du er allerede tilmeldt dette event.</p>
+        )}
+        {submitStatus === "error" && (
+          <ErrorMessage>Noget gik galt. Prøv igen senere.</ErrorMessage>
+        )}
       </form>
     </section>
   );

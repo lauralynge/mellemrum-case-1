@@ -18,6 +18,7 @@ export default function EventPage() {
   const [email, setEmail] = useState("");
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [submitStatus, setSubmitStatus] = useState(null);
 
   useEffect(() => {
     getEventById(eventId)
@@ -26,30 +27,32 @@ export default function EventPage() {
       .finally(() => setIsLoading(false));
   }, [eventId]);
 
-  async function handleSubmit(eventSubmit) {
-    eventSubmit.preventDefault();
+ async function handleSubmit(eventSubmit) {
+   eventSubmit.preventDefault();
+   setSubmitStatus(null);
 
-    try {
-      const alreadyRegistered = await checkExistingRegistration(
-        email,
-        Number(eventId),
-      );
+   try {
+     const alreadyRegistered = await checkExistingRegistration(
+       email,
+       Number(eventId),
+     );
 
-      if (alreadyRegistered) {
-        console.log("Du er allerede tilmeldt dette event");
-        return;
-      }
+     if (alreadyRegistered) {
+       setSubmitStatus("duplicate");
+       return;
+     }
 
-      await createRegistration({
-        name,
-        email,
-        eventId: Number(eventId),
-      });
-      console.log("Tilmelding oprettet");
-    } catch (error) {
-      console.error("Tilmelding fejlede:", error);
-    }
-  }
+     await createRegistration({
+       name,
+       email,
+       eventId: Number(eventId),
+     });
+     setSubmitStatus("success");
+   } catch (error) {
+     console.error("Tilmelding fejlede:", error);
+     setSubmitStatus("error");
+   }
+ }
 
   if (isLoading) {
     return (
@@ -91,6 +94,7 @@ export default function EventPage() {
           setName={setName}
           setEmail={setEmail}
           onSubmit={handleSubmit}
+          submitStatus={submitStatus}
         />
       </main>
     </>

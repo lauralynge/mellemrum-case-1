@@ -6,6 +6,7 @@ import ErrorMessage from "../components/ErrorMessage";
 import LoadingMessage from "../components/LoadingMessage";
 import styles from "./EventPage.module.css";
 import { getEventById } from "../services/events";
+import { createRegistration } from "../services/registrations";
 
 export default function EventPage() {
   const { eventId } = useParams();
@@ -24,7 +25,17 @@ export default function EventPage() {
 
   async function handleSubmit(eventSubmit) {
     eventSubmit.preventDefault();
-    console.log({ name, email, event: event.title });
+
+    try {
+      await createRegistration({
+        name,
+        email,
+        eventId: Number(eventId),
+      });
+      console.log("Tilmelding oprettet");
+    } catch (error) {
+      console.error("Tilmelding fejlede:", error);
+    }
   }
 
   if (isLoading) {

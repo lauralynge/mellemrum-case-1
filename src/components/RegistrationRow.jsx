@@ -8,10 +8,10 @@ export default function RegistrationRow({ registration }) {
         <small>{registration.email}</small>
       </div>
 
-      <span>{registration.eventTitle}</span>
+      <span>{registration.events.title}</span>
 
       <span>
-        {new Date(registration.eventDate).toLocaleDateString("da-DK")}
+        {new Date(registration.events.date).toLocaleDateString("da-DK")}
       </span>
 
       <span className={styles.status}>{registration.status}</span>

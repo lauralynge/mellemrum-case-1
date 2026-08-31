@@ -6,6 +6,10 @@ import ErrorMessage from "../components/ErrorMessage";
 import LoadingMessage from "../components/LoadingMessage";
 import styles from "./EventPage.module.css";
 import { getEventById } from "../services/events";
+import {
+  createRegistration,
+  checkExistingRegistration,
+} from "../services/registrations";
 
 export default function EventPage() {
   const { eventId } = useParams();
@@ -14,6 +18,9 @@ export default function EventPage() {
   const [email, setEmail] = useState("");
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [submitStatus, setSubmitStatus] = useState(null);
+  const [fieldErrors, setFieldErrors] = useState({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
     getEventById(eventId)
@@ -22,9 +29,65 @@ export default function EventPage() {
       .finally(() => setIsLoading(false));
   }, [eventId]);
 
+  function handleNameChange(value) {
+    setName(value);
+    if (fieldErrors.name) {
+      setFieldErrors((prev) => ({ ...prev, name: undefined }));
+    }
+  }
+
+  function handleEmailChange(value) {
+    setEmail(value);
+    if (fieldErrors.email) {
+      setFieldErrors((prev) => ({ ...prev, email: undefined }));
+    }
+  }
+
   async function handleSubmit(eventSubmit) {
     eventSubmit.preventDefault();
-    console.log({ name, email, event: event.title });
+    setSubmitStatus(null);
+
+    const errors = {};
+    if (!name.trim()) {
+      errors.name = "Udfyld venligst";
+    }
+    if (!email.trim()) {
+      errors.email = "Udfyld venligst";
+    } else if (!email.includes("@")) {
+      errors.email = "Ugyldig e-mail";
+    }
+
+    if (Object.keys(errors).length > 0) {
+      setFieldErrors(errors);
+      return;
+    }
+
+    setFieldErrors({});
+    setIsSubmitting(true);
+
+    try {
+      const alreadyRegistered = await checkExistingRegistration(
+        email,
+        Number(eventId),
+      );
+
+      if (alreadyRegistered) {
+        setSubmitStatus("duplicate");
+        return;
+      }
+
+      await createRegistration({
+        name,
+        email,
+        eventId: Number(eventId),
+      });
+      setSubmitStatus("success");
+    } catch (error) {
+      console.error("Tilmelding fejlede:", error);
+      setSubmitStatus("error");
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   if (isLoading) {
@@ -52,6 +115,18 @@ export default function EventPage() {
     return null;
   }
 
+  /* Format event date and time */
+  const eventDate = new Date(event.date);
+  const formattedEventDate = eventDate.toLocaleDateString("da-DK", {
+    weekday: "long",
+    day: "numeric",
+    month: "long",
+  });
+  const formattedEventTime = eventDate.toLocaleTimeString("da-DK", {
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+
   return (
     <>
       <main className={styles.eventPage}>
@@ -64,9 +139,14 @@ export default function EventPage() {
         <RegistrationForm
           name={name}
           email={email}
-          setName={setName}
-          setEmail={setEmail}
+          setName={handleNameChange}
+          setEmail={handleEmailChange}
           onSubmit={handleSubmit}
+          submitStatus={submitStatus}
+          eventTitle={event.title}
+          eventDateFormatted={`${formattedEventDate} kl. ${formattedEventTime}`}
+          fieldErrors={fieldErrors}
+          isSubmitting={isSubmitting}
         />
       </main>
     </>

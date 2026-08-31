@@ -44,6 +44,66 @@
   opacity: 0.65;
 }
 
+/* confirmation styles */
+.confirmationFull {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  grid-column: 1 / -1;
+  justify-content: center;
+  min-height: 200px;
+  text-align: center;
+}
+
+.confirmationTitle {
+  font-size: clamp(3rem, 5vw, 4rem);
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -0.065em;
+  margin: 0;
+}
+
+.confirmationLink {
+  font-weight: 700;
+  text-decoration-color: var(--green);
+  text-underline-offset: 0.3rem;
+}
+
+/* Separator imellem event title og date */
+.separator {
+  margin: 0 0.35rem;
+}
+
+/* Duplicate registration message */
+.duplicateMessage {
+  background: var(--paper);
+  border-radius: 10px;
+  color: #53605b;
+  font-weight: 400;
+  margin: 1rem 0 0;
+  padding: 1rem 1.25rem;
+}
+
+/* Registration feedback styles */
+.labelRow {
+  align-items: baseline;
+  display: flex;
+  gap: 0.5rem;
+  justify-content: space-between;
+}
+
+.fieldError {
+  color: #c0392b;
+  font-weight: 600;
+  text-transform: none;
+  letter-spacing: normal;
+}
+
+.inputError {
+  border-color: #c0392b !important;
+}
+
 /* Responsive: stak formularen i én kolonne på tablet/mobil */
 @media (max-width: 900px) {
   .signupPanel {

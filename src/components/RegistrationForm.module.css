@@ -85,6 +85,25 @@
   padding: 1rem 1.25rem;
 }
 
+/* Registration feedback styles */
+.labelRow {
+  align-items: baseline;
+  display: flex;
+  gap: 0.5rem;
+  justify-content: space-between;
+}
+
+.fieldError {
+  color: #c0392b;
+  font-weight: 600;
+  text-transform: none;
+  letter-spacing: normal;
+}
+
+.inputError {
+  border-color: #c0392b !important;
+}
+
 /* Responsive: stak formularen i én kolonne på tablet/mobil */
 @media (max-width: 900px) {
   .signupPanel {

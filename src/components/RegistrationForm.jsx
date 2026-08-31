@@ -11,6 +11,7 @@ export default function RegistrationForm({
   submitStatus,
   eventTitle,
   eventDateFormatted,
+  fieldErrors = {},
 }) {
   if (submitStatus === "success") {
     return (
@@ -37,18 +38,34 @@ export default function RegistrationForm({
         <p>Udfyld formularen, så sender vi din tilmelding til arrangøren.</p>
       </div>
 
-      <form onSubmit={onSubmit}>
+      <form onSubmit={onSubmit} noValidate>
         <label className="formLabel">
-          Navn
-          <input value={name} onChange={(e) => setName(e.target.value)} />
+          <span className={styles.labelRow}>
+            Navn
+            {fieldErrors.name && (
+              <span className={styles.fieldError}>* {fieldErrors.name}</span>
+            )}
+          </span>
+          <input
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            className={fieldErrors.name ? styles.inputError : undefined}
+          />
         </label>
 
         <label className="formLabel">
-          E-mail
+          <span className={styles.labelRow}>
+            E-mail
+            {fieldErrors.email && (
+              <span className={styles.fieldError}>* {fieldErrors.email}</span>
+            )}
+          </span>
           <input
+            type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="dig@example.com"
+            className={fieldErrors.email ? styles.inputError : undefined}
           />
         </label>
 

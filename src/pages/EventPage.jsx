@@ -19,6 +19,7 @@ export default function EventPage() {
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [submitStatus, setSubmitStatus] = useState(null);
+  const [fieldErrors, setFieldErrors] = useState({});
 
   useEffect(() => {
     getEventById(eventId)
@@ -27,32 +28,49 @@ export default function EventPage() {
       .finally(() => setIsLoading(false));
   }, [eventId]);
 
-  async function handleSubmit(eventSubmit) {
-    eventSubmit.preventDefault();
-    setSubmitStatus(null);
+async function handleSubmit(eventSubmit) {
+  eventSubmit.preventDefault();
+  setSubmitStatus(null);
 
-    try {
-      const alreadyRegistered = await checkExistingRegistration(
-        email,
-        Number(eventId),
-      );
-
-      if (alreadyRegistered) {
-        setSubmitStatus("duplicate");
-        return;
-      }
-
-      await createRegistration({
-        name,
-        email,
-        eventId: Number(eventId),
-      });
-      setSubmitStatus("success");
-    } catch (error) {
-      console.error("Tilmelding fejlede:", error);
-      setSubmitStatus("error");
-    }
+  const errors = {};
+  if (!name.trim()) {
+    errors.name = "Udfyld venligst";
   }
+  if (!email.trim()) {
+    errors.email = "Udfyld venligst";
+  } else if (!email.includes("@")) {
+    errors.email = "Ugyldig e-mail";
+  }
+
+  if (Object.keys(errors).length > 0) {
+    setFieldErrors(errors);
+    return;
+  }
+
+  setFieldErrors({});
+
+  try {
+    const alreadyRegistered = await checkExistingRegistration(
+      email,
+      Number(eventId),
+    );
+
+    if (alreadyRegistered) {
+      setSubmitStatus("duplicate");
+      return;
+    }
+
+    await createRegistration({
+      name,
+      email,
+      eventId: Number(eventId),
+    });
+    setSubmitStatus("success");
+  } catch (error) {
+    console.error("Tilmelding fejlede:", error);
+    setSubmitStatus("error");
+  }
+}
 
   if (isLoading) {
     return (
@@ -109,6 +127,7 @@ export default function EventPage() {
           submitStatus={submitStatus}
           eventTitle={event.title}
           eventDateFormatted={`${formattedEventDate} kl. ${formattedEventTime}`}
+          fieldErrors={fieldErrors}
         />
       </main>
     </>

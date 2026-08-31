@@ -12,6 +12,7 @@ export default function RegistrationForm({
   eventTitle,
   eventDateFormatted,
   fieldErrors = {},
+  isSubmitting,
 }) {
   if (submitStatus === "success") {
     return (
@@ -69,7 +70,9 @@ export default function RegistrationForm({
           />
         </label>
 
-        <button type="submit">Tilmeld mig</button>
+        <button type="submit" disabled={isSubmitting}>
+          {isSubmitting ? "Tilmelder..." : "Tilmeld mig"}
+        </button>
 
         {submitStatus === "duplicate" && (
           <p className={styles.duplicateMessage} role="status">

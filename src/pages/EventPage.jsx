@@ -20,6 +20,7 @@ export default function EventPage() {
   const [isLoading, setIsLoading] = useState(true);
   const [submitStatus, setSubmitStatus] = useState(null);
   const [fieldErrors, setFieldErrors] = useState({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
     getEventById(eventId)
@@ -62,6 +63,7 @@ export default function EventPage() {
     }
 
     setFieldErrors({});
+    setIsSubmitting(true);
 
     try {
       const alreadyRegistered = await checkExistingRegistration(
@@ -83,6 +85,8 @@ export default function EventPage() {
     } catch (error) {
       console.error("Tilmelding fejlede:", error);
       setSubmitStatus("error");
+    } finally {
+      setIsSubmitting(false);
     }
   }
 
@@ -142,6 +146,7 @@ export default function EventPage() {
           eventTitle={event.title}
           eventDateFormatted={`${formattedEventDate} kl. ${formattedEventTime}`}
           fieldErrors={fieldErrors}
+          isSubmitting={isSubmitting}
         />
       </main>
     </>

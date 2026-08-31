@@ -6,7 +6,10 @@ import ErrorMessage from "../components/ErrorMessage";
 import LoadingMessage from "../components/LoadingMessage";
 import styles from "./EventPage.module.css";
 import { getEventById } from "../services/events";
-import { createRegistration } from "../services/registrations";
+import {
+  createRegistration,
+  checkExistingRegistration,
+} from "../services/registrations";
 
 export default function EventPage() {
   const { eventId } = useParams();
@@ -27,6 +30,16 @@ export default function EventPage() {
     eventSubmit.preventDefault();
 
     try {
+      const alreadyRegistered = await checkExistingRegistration(
+        email,
+        Number(eventId),
+      );
+
+      if (alreadyRegistered) {
+        console.log("Du er allerede tilmeldt dette event");
+        return;
+      }
+
       await createRegistration({
         name,
         email,

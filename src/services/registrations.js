@@ -46,3 +46,23 @@ export async function createRegistration({ name, email, eventId }) {
     throw error;
   }
 }
+
+/* Tjek for eksisterende tilmelding */
+export async function checkExistingRegistration(email, eventId) {
+  try {
+    const response = await fetch(
+      `${SUPABASE_URL}/registrations?email=eq.${encodeURIComponent(email)}&eventId=eq.${eventId}`,
+      { headers },
+    );
+    if (!response.ok) {
+      throw new Error(
+        `Kunne ikke tjekke eksisterende tilmelding (status ${response.status})`,
+      );
+    }
+    const data = await response.json();
+    return data.length > 0;
+  } catch (error) {
+    console.error("Fejl ved tjek af eksisterende tilmelding:", error);
+    throw error;
+  }
+}

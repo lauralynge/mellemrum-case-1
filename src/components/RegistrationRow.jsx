@@ -14,7 +14,15 @@ export default function RegistrationRow({ registration }) {
         {new Date(registration.events.date).toLocaleDateString("da-DK")}
       </span>
 
-      <span className={styles.status}>{registration.status}</span>
+      <span
+        className={`${styles.status} ${
+          registration.status === "Bekræftet"
+            ? styles.statusConfirmed
+            : styles.statusNew
+        }`}
+      >
+        {registration.status}
+      </span>
     </div>
   );
 }

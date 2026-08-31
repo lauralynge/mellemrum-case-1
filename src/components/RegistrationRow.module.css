@@ -22,13 +22,22 @@
 }
 
 .status {
-  background: #dff3cc;
   border-radius: 999px;
   display: inline-block;
   font-size: 0.75rem;
   font-weight: 750;
   padding: 0.35rem 0.6rem;
   text-align: center;
+}
+
+.statusNew {
+  background: #fdf0d5;
+  color: var(--ink);
+}
+
+.statusConfirmed {
+  background: #dff3cc;
+  color: var(--ink);
 }
 
 /* Responsive: stak felterne i én kolonne på mobil */

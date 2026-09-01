@@ -35,17 +35,6 @@ export default function HomePage() {
     return matchesSearch && matchesCategory;
   });
 
-  function formatEventDate(eventDate) {
-    const date = new Date(eventDate);
-    const formattedDate = date.toLocaleDateString("da-DK", {
-      weekday: "long",
-      day: "numeric",
-      month: "long",
-    });
-
-    return formattedDate.charAt(0).toUpperCase() + formattedDate.slice(1);
-  }
-
   return (
     <>
       {/*Hero section*/}
@@ -83,7 +72,7 @@ export default function HomePage() {
         {isLoading && <LoadingMessage>Indlæser events...</LoadingMessage>}
  
         {/*EventGrid section med EventCard komponenter*/}
-        <EventGrid events={filteredEvents} formatEventDate={formatEventDate} />
+        <EventGrid events={filteredEvents} />
       </main>
     </>
   );

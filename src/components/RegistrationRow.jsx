@@ -1,5 +1,6 @@
 import { Check } from "lucide-react";
 import styles from "./RegistrationRow.module.css";
+import { formatEventDate } from "../utils/formatDate";
 
 export default function RegistrationRow({ registration, onConfirm }) {
   return (
@@ -11,9 +12,7 @@ export default function RegistrationRow({ registration, onConfirm }) {
 
       <span>{registration.events.title}</span>
 
-      <span>
-        {new Date(registration.events.date).toLocaleDateString("da-DK")}
-      </span>
+      <span>{formatEventDate(registration.events.date)}</span>
 
       <div className={styles.statusCell}>
         <span

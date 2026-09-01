@@ -6,6 +6,7 @@ import ErrorMessage from "../components/ErrorMessage";
 import LoadingMessage from "../components/LoadingMessage";
 import styles from "./EventPage.module.css";
 import { getEventById } from "../services/events";
+import { formatEventDate, formatEventTime } from "../utils/formatDate";
 import {
   createRegistration,
   checkExistingRegistration,
@@ -115,18 +116,6 @@ export default function EventPage() {
     return null;
   }
 
-  /* Format event date and time */
-  const eventDate = new Date(event.date);
-  const formattedEventDate = eventDate.toLocaleDateString("da-DK", {
-    weekday: "long",
-    day: "numeric",
-    month: "long",
-  });
-  const formattedEventTime = eventDate.toLocaleTimeString("da-DK", {
-    hour: "2-digit",
-    minute: "2-digit",
-  });
-
   return (
     <>
       <main className={styles.eventPage}>
@@ -144,7 +133,7 @@ export default function EventPage() {
           onSubmit={handleSubmit}
           submitStatus={submitStatus}
           eventTitle={event.title}
-          eventDateFormatted={`${formattedEventDate} kl. ${formattedEventTime}`}
+          eventDateFormatted={`${formatEventDate(event.date)} kl. ${formatEventTime(event.date)}`}
           fieldErrors={fieldErrors}
           isSubmitting={isSubmitting}
         />

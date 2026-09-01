@@ -1,8 +1,7 @@
 import styles from "./EventDetail.module.css";
+import { formatEventDate, formatEventTime } from "../utils/formatDate";
 
 export default function EventDetail({ event }) {
-  const date = new Date(event.date);
-
   return (
     <section className={styles.eventDetail}>
       <img src={event.image} alt="" className={styles.image} />
@@ -18,16 +17,7 @@ export default function EventDetail({ event }) {
         <div className={styles.detailList}>
           <p>
             <strong>Dato</strong>
-            {date.toLocaleDateString("da-DK", {
-              weekday: "long",
-              day: "numeric",
-              month: "long",
-            })}{" "}
-            kl.{" "}
-            {date.toLocaleTimeString("da-DK", {
-              hour: "2-digit",
-              minute: "2-digit",
-            })}
+            {formatEventDate(event.date)} kl. {formatEventTime(event.date)}
           </p>
 
           <p>

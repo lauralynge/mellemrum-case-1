@@ -1,7 +1,9 @@
+// EventCard.jsx
 import { Link } from "react-router";
 import styles from "./EventCard.module.css";
+import { formatEventDate } from "../utils/formatDate";
 
-export default function EventCard({ event, formatEventDate }) {
+export default function EventCard({ event }) {
   return (
     <article className={styles.eventCard}>
       <img src={event.image} alt="" />

@@ -1,16 +1,23 @@
-.notFoundTitle {
-  font-size: 5rem;
-}
-
 .notFound {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 60vh;
   text-align: center;
 }
 
+.notFoundTitle {
+  font-size: clamp(2.2rem, 4vw, 4rem);
+  font-weight: 800;
+  letter-spacing: -0.065em;
+  line-height: 1;
+  margin: 0 0 1rem;
+}
+
 .notFoundLink {
-  background: var(--green);
-  color: white;
-  display: inline-block;
-  margin-top: 1rem;
-  padding: 0.75rem 1rem;
-  text-decoration: none;
+  font-weight: 700;
+  text-decoration-color: var(--green);
+  text-underline-offset: 0.3rem;
+  margin-top: 2rem;
 }

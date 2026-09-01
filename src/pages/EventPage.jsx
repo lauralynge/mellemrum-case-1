@@ -112,9 +112,17 @@ export default function EventPage() {
     );
   }
 
-  if (!event) {
-    return null;
-  }
+if (!event) {
+  return (
+    <main className={styles.eventNotFound}>
+      <h1 className={styles.eventNotFoundTitle}>Event ikke fundet</h1>
+      <p>Dette event findes ikke, eller er ikke længere tilgængeligt.</p>
+      <Link to="/" className={styles.eventNotFoundLink}>
+        Se alle events →
+      </Link>
+    </main>
+  );
+}
 
   return (
     <>

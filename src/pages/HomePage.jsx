@@ -42,7 +42,7 @@ export default function HomePage() {
         eyebrow="Kultur i Aarhus"
         title="Find plads til noget nyt."
         text="Koncerter, talks og workshops samlet ét sted. Find dit næste event, og tilmeld dig på få minutter."
-        backgroundImage="https://images.unsplash.com/photo-1595146463222-19603449c6af?q=80&w=3872&auto=format&fit=crop"
+        backgroundImage="https://images.unsplash.com/photo-1595146463222-19603449c6af?w=2200&h=1300&q=70&auto=format&fit=crop"
         linkText="Se kommende events ↓"
         linkHref="#events"
       />
@@ -70,7 +70,7 @@ export default function HomePage() {
 
         {/* Loading-tilstand */}
         {isLoading && <LoadingMessage>Indlæser events...</LoadingMessage>}
- 
+
         {/*EventGrid section med EventCard komponenter*/}
         <EventGrid events={filteredEvents} />
       </main>

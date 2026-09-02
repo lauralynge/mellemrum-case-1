@@ -71,12 +71,20 @@
   margin-top: 1rem;
   padding: 0.7rem 1rem;
   text-decoration: none;
+  pointer-events: none;
   transition:
     background 160ms ease,
     color 160ms ease;
 }
 
-.cardLink:hover {
+.cardWrapper {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+/* Hover via hele kortet */
+.eventCard:hover .cardLink {
   background: var(--lime);
   color: var(--green);
 }

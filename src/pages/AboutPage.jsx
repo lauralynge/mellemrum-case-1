@@ -10,7 +10,7 @@ export default function AboutPage() {
         eyebrow="Om Mellemrum"
         title="Vi skaber mellemrum i kalenderen."
         text="Udvalgte kulturoplevelser og nye perspektiver på Aarhus."
-        backgroundImage="https://images.unsplash.com/photo-1553376482-e96b68bd1e11?q=80&w=2400&auto=format&fit=crop&ixlib=rb-4.1.0"
+        backgroundImage="https://images.unsplash.com/photo-1553376482-e96b68bd1e11?w=2200&h=1300&q=70&auto=format&fit=crop"
       />
 
       <main className={styles.aboutPage}>
@@ -105,7 +105,7 @@ export default function AboutPage() {
         >
           <figure className={styles.aboutCityFigure}>
             <img
-              src="https://images.unsplash.com/photo-1532370778713-1400f3d62094?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.1.0"
+              src="https://images.unsplash.com/photo-1532370778713-1400f3d62094?w=1000&q=60&auto=format&fit=crop"
               alt="Moderne arkitektur med lyse facader og turkise altaner"
             />
             <figcaption className={styles.aboutCityCaption}>

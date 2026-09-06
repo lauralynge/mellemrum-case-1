@@ -2,9 +2,10 @@ import { SUPABASE_URL, headers } from "../supabaseClient";
 
 export async function getEvents() {
   try {
-    const response = await fetch(`${SUPABASE_URL}/events?order=date.asc`, {
-      headers,
-    });
+    const response = await fetch(
+      `${SUPABASE_URL}/events?select=*,venue:venues(*)&order=date.asc`,
+      { headers },
+    );
     if (!response.ok) {
       throw new Error(`Kunne ikke hente events (status ${response.status})`);
     }
@@ -17,9 +18,10 @@ export async function getEvents() {
 
 export async function getEventById(eventId) {
   try {
-    const response = await fetch(`${SUPABASE_URL}/events?id=eq.${eventId}`, {
-      headers,
-    });
+    const response = await fetch(
+      `${SUPABASE_URL}/events?id=eq.${eventId}&select=*,venue:venues(*)`,
+      { headers },
+    );
     if (!response.ok) {
       throw new Error(`Kunne ikke hente event (status ${response.status})`);
     }

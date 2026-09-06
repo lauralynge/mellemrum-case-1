@@ -55,7 +55,7 @@
 .eventMeta {
   border-top: 1px solid var(--line);
   display: flex;
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   justify-content: space-between;
   margin-top: auto;
   padding-top: 1rem;
@@ -66,9 +66,8 @@
   background: var(--green);
   border-radius: 999px;
   color: white;
-  font-size: 0.88rem;
+  font-size: 0.8rem;
   font-weight: 750;
-  margin-top: 1rem;
   padding: 0.7rem 1rem;
   text-decoration: none;
   pointer-events: none;
@@ -87,4 +86,27 @@
 .eventCard:hover .cardLink {
   background: var(--lime);
   color: var(--green);
+}
+
+/*  */
+.eventCardBottom {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+
+.eventCapacity {
+  color: #54605b;
+  font-size: 0.8rem;
+  white-space: nowrap;
+}
+
+.soldOut {
+  background: #f3dcda;
+  border-radius: 999px;
+  color: #a5412c;
+  font-size: 0.8rem;
+  padding: 0.3rem 0.8rem;
+  white-space: nowrap;
 }

@@ -46,6 +46,18 @@
   grid-template-columns: 5rem 1fr;
 }
 
+.eventCapacity {
+  color: #54605b;
+}
+
+.soldOut {
+  background: #f3dcda;
+  border-radius: 999px;
+  color: #a5412c;
+  display: inline-block;
+  padding: 0.3rem 0.8rem;
+}
+
 /* --- MEDIA QUERIES --- */
 
 @media (max-width: 900px) {

@@ -1,7 +1,11 @@
 import styles from "./EventDetail.module.css";
 import { formatEventDate, formatEventTime } from "../utils/formatDate";
+import { getAvailableSpots } from "../utils/eventCapacity";
 
 export default function EventDetail({ event }) {
+  const registrationCount = event.registrations?.[0]?.count ?? 0;
+  const isSoldOut = getAvailableSpots(event) <= 0;
+
   return (
     <section className={styles.eventDetail}>
       <img src={event.image} alt="" className={styles.image} />
@@ -13,6 +17,12 @@ export default function EventDetail({ event }) {
 
         {/* lead er global */}
         <p className="lead">{event.summary}</p>
+
+        <p className={isSoldOut ? styles.soldOut : styles.eventCapacity}>
+          {isSoldOut
+            ? "Udsolgt"
+            : `${registrationCount} / ${event.capacity} pladser`}
+        </p>
 
         <div className={styles.detailList}>
           <p>

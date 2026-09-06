@@ -1,8 +1,11 @@
 import { Link } from "react-router";
 import styles from "./EventCard.module.css";
 import { formatEventDate } from "../utils/formatDate";
+import { getAvailableSpots } from "../utils/eventCapacity";
 
 export default function EventCard({ event }) {
+  const registrationCount = event.registrations?.[0]?.count ?? 0;
+  const isSoldOut = getAvailableSpots(event) <= 0;
   return (
     <Link to={`/events/${event.id}`} className={styles.cardWrapper}>
       <article className={styles.eventCard}>
@@ -20,7 +23,14 @@ export default function EventCard({ event }) {
             <span>{event.venue?.name}</span>
           </div>
 
-          <span className={styles.cardLink}>Læs mere</span>
+          <div className={styles.eventCardBottom}>
+            <span className={styles.cardLink}>Læs mere</span>
+            <span className={isSoldOut ? styles.soldOut : styles.eventCapacity}>
+              {isSoldOut
+                ? "Udsolgt"
+                : `${registrationCount} / ${event.capacity} pladser`}
+            </span>
+          </div>
         </div>
       </article>
     </Link>

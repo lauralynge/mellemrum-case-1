@@ -3,7 +3,7 @@ import { SUPABASE_URL, headers } from "../supabaseClient";
 export async function getEvents() {
   try {
     const response = await fetch(
-      `${SUPABASE_URL}/events?select=*,venue:venues(*)&order=date.asc`,
+      `${SUPABASE_URL}/events?select=*,venue:venues(*),registrations(count)&order=date.asc`,
       { headers },
     );
     if (!response.ok) {
@@ -19,7 +19,7 @@ export async function getEvents() {
 export async function getEventById(eventId) {
   try {
     const response = await fetch(
-      `${SUPABASE_URL}/events?id=eq.${eventId}&select=*,venue:venues(*)`,
+      `${SUPABASE_URL}/events?id=eq.${eventId}&select=*,venue:venues(*),registrations(count)`,
       { headers },
     );
     if (!response.ok) {

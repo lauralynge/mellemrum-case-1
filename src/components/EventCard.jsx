@@ -17,7 +17,7 @@ export default function EventCard({ event }) {
 
           <div className={styles.eventMeta}>
             <span>{formatEventDate(event.date)}</span>
-            <span>{event.venueName}</span>
+            <span>{event.venue?.name}</span>
           </div>
 
           <span className={styles.cardLink}>Læs mere</span>

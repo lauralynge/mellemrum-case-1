@@ -4,7 +4,7 @@ import { SUPABASE_URL, headers } from "../supabaseClient";
 export async function getRegistrations() {
   try {
     const response = await fetch(
-      `${SUPABASE_URL}/registrations?select=*,events(title,date,venueName)&order=createdAt.desc`,
+      `${SUPABASE_URL}/registrations?select=*,events(title,date,venue:venues(name))&order=createdAt.desc`,
       { headers },
     );
     if (!response.ok) {
@@ -63,27 +63,6 @@ export async function checkExistingRegistration(email, eventId) {
     return data.length > 0;
   } catch (error) {
     console.error("Fejl ved tjek af eksisterende tilmelding:", error);
-    throw error;
-  }
-}
-
-/* Bekræft en tilmelding */
-export async function updateRegistrationStatus(id, status) {
-  try {
-    const response = await fetch(`${SUPABASE_URL}/registrations?id=eq.${id}`, {
-      method: "PATCH",
-      headers: {
-        ...headers,
-        Prefer: "return=representation",
-      },
-      body: JSON.stringify({ status }),
-    });
-    if (!response.ok) {
-      throw new Error(`Kunne ikke opdatere status (status ${response.status})`);
-    }
-    return await response.json();
-  } catch (error) {
-    console.error("Fejl ved opdatering af status:", error);
     throw error;
   }
 }

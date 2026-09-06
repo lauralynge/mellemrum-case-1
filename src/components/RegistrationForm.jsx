@@ -13,6 +13,7 @@ export default function RegistrationForm({
   eventDateFormatted,
   fieldErrors = {},
   isSubmitting,
+  isSoldOut,
 }) {
   if (submitStatus === "success") {
     return (
@@ -22,6 +23,22 @@ export default function RegistrationForm({
           <p className={styles.confirmationDetails}>
             {eventTitle} <span className={styles.separator}>·</span>{" "}
             {eventDateFormatted}
+          </p>
+          <Link to="/" className={styles.confirmationLink}>
+            Se andre events →
+          </Link>
+        </div>
+      </section>
+    );
+  }
+
+  if (isSoldOut) {
+    return (
+      <section className={styles.signupPanel}>
+        <div className={styles.confirmationFull}>
+          <p className={styles.confirmationTitle}>Eventet er udsolgt</p>
+          <p className={styles.confirmationDetails}>
+            Der er desværre ikke flere ledige pladser til dette event.
           </p>
           <Link to="/" className={styles.confirmationLink}>
             Se andre events →
@@ -78,6 +95,9 @@ export default function RegistrationForm({
           <p className={styles.duplicateMessage} role="status">
             Du er allerede tilmeldt dette event.
           </p>
+        )}
+        {submitStatus === "full" && (
+          <ErrorMessage>Eventet er desværre udsolgt.</ErrorMessage>
         )}
         {submitStatus === "error" && (
           <ErrorMessage>Noget gik galt. Prøv igen senere.</ErrorMessage>

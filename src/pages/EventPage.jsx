@@ -7,6 +7,7 @@ import LoadingMessage from "../components/LoadingMessage";
 import styles from "./EventPage.module.css";
 import { getEventById } from "../services/events";
 import { formatEventDate, formatEventTime } from "../utils/formatDate";
+import { getAvailableSpots } from "../utils/eventCapacity";
 import {
   createRegistration,
   checkExistingRegistration,
@@ -64,6 +65,12 @@ export default function EventPage() {
     }
 
     setFieldErrors({});
+
+    if (getAvailableSpots(event) <= 0) {
+      setSubmitStatus("full");
+      return;
+    }
+
     setIsSubmitting(true);
 
     try {
@@ -112,17 +119,17 @@ export default function EventPage() {
     );
   }
 
-if (!event) {
-  return (
-    <main className={styles.eventNotFound}>
-      <h1 className={styles.eventNotFoundTitle}>Event ikke fundet</h1>
-      <p>Dette event findes ikke, eller er ikke længere tilgængeligt.</p>
-      <Link to="/" className={styles.eventNotFoundLink}>
-        Se alle events →
-      </Link>
-    </main>
-  );
-}
+  if (!event) {
+    return (
+      <main className={styles.eventNotFound}>
+        <h1 className={styles.eventNotFoundTitle}>Event ikke fundet</h1>
+        <p>Dette event findes ikke, eller er ikke længere tilgængeligt.</p>
+        <Link to="/" className={styles.eventNotFoundLink}>
+          Se alle events →
+        </Link>
+      </main>
+    );
+  }
 
   return (
     <>
@@ -144,6 +151,7 @@ if (!event) {
           eventDateFormatted={`${formatEventDate(event.date)} kl. ${formatEventTime(event.date)}`}
           fieldErrors={fieldErrors}
           isSubmitting={isSubmitting}
+          isSoldOut={getAvailableSpots(event) <= 0}
         />
       </main>
     </>

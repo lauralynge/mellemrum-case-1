@@ -25,7 +25,7 @@ export default function EventCard({ event }) {
 
           <div className={styles.eventCardBottom}>
             <span className={styles.cardLink}>Læs mere</span>
-            <span className={isSoldOut ? styles.soldOut : styles.eventCapacity}>
+            <span className={isSoldOut ? "soldOut" : styles.eventCapacity}>
               {isSoldOut
                 ? "Udsolgt"
                 : `${registrationCount} / ${event.capacity} pladser`}

@@ -1,18 +1,14 @@
 import { Check } from "lucide-react";
 import styles from "./RegistrationRow.module.css";
-import { formatEventDate } from "../utils/formatDate";
 
 export default function RegistrationRow({ registration, onConfirm }) {
   return (
     <div className={styles.registrationRow}>
       <div>
         <strong>{registration.name}</strong>
-        <small>{registration.email}</small>
       </div>
 
-      <span>{registration.events.title}</span>
-
-      <span>{formatEventDate(registration.events.date)}</span>
+      <span>{registration.email}</span>
 
       <div className={styles.statusCell}>
         <span

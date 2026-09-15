@@ -1,3 +1,4 @@
+/* Grøn header med sidetitel og overordnet tælling */
 .adminHeader {
   background: var(--green);
   color: white;
@@ -11,25 +12,63 @@
   margin: 0;
 }
 
-.registrationList {
+/* Søgeboksens ydre ramme - matcher stilen fra "Kommende events"-søgningen på forsiden */
+.searchWrapper {
   background: white;
   border: 1px solid var(--line);
-  border-radius: 14px;
-  box-shadow: 0 8px 26px rgba(23, 32, 29, 0.05);
-  overflow: hidden;
+  border-radius: 20px;
+  margin-bottom: 2.5rem;
+  padding: 1.5rem 2rem;
 }
 
-.registrationLabels {
-  background: var(--cream);
-  font-size: 0.72rem;
+.searchLabel {
+  display: block;
+  font-size: 1rem;
   font-weight: 800;
   letter-spacing: 0.08em;
+  margin-bottom: 0.75rem;
   text-transform: uppercase;
 }
 
-/* Skjul kolonneoverskrifter på mobil, hvor rækkerne alligevel stables */
-@media (max-width: 620px) {
-  .registrationLabels {
-    display: none;
-  }
+.searchInput {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 1rem 1.2rem;
+  width: 100%;
+}
+
+/* Liste af event-grupper */
+.groupList {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.group {
+  background: var(--cream);
+  border-radius: 20px;
+  padding: 2rem 2.2rem;
+}
+
+.groupTitle {
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  margin: 0 0 0.5rem;
+}
+
+/* Metalinje under titlen (dato | sted | antal | status), separeret med lodrette streger */
+.groupMeta {
+  align-items: center;
+  color: #59635f;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 0 0 1.5rem;
+}
+
+.groupMeta span:not(:last-child)::after {
+  color: var(--line);
+  content: "|";
+  margin-left: 1rem;
 }

@@ -4,7 +4,7 @@ import { SUPABASE_URL, headers } from "../supabaseClient";
 export async function getRegistrations() {
   try {
     const response = await fetch(
-      `${SUPABASE_URL}/registrations?select=*,events(title,date,venue:venues(name))&order=createdAt.desc`,
+      `${SUPABASE_URL}/registrations?select=*,events(title,date,capacity,venue:venues(name))&order=createdAt.desc`,
       { headers },
     );
     if (!response.ok) {

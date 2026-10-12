@@ -20,18 +20,9 @@
 
 .title {
   font-size: clamp(3rem, 5vw, 5.5rem);
-  letter-spacing: -0.065em;
+  letter-spacing: var(--letter-spacing-medium);
   line-height: 0.95;
   margin: 0 0 1.5rem;
-}
-
-.category {
-  color: var(--green);
-  font-size: 0.78rem;
-  font-weight: 800;
-  letter-spacing: 0.16em;
-  margin-bottom: 1rem;
-  text-transform: uppercase;
 }
 
 .detailList {
@@ -47,13 +38,13 @@
 }
 
 .eventCapacity {
-  color: #54605b;
+  color: var(--soft-green);
 }
 
 .soldOut {
   background: #f3dcda;
   border-radius: 999px;
-  color: #a5412c;
+  color: var(--orange);
   display: inline-block;
   padding: 0.3rem 0.8rem;
 }

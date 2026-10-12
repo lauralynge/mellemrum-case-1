@@ -11,8 +11,7 @@ export default function EventDetail({ event }) {
       <img src={event.image} alt="" className={styles.image} />
 
       <div className={styles.content}>
-        <p className={styles.category}>{event.category}</p>
-
+        <p className={`eyebrowOrange`}>{event.category}</p>
         <h1 className={styles.title}>{event.title}</h1>
 
         {/* lead er global */}

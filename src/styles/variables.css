@@ -13,16 +13,22 @@
 
   /* Colors */
   --ink: #17201d;
+  --black: #252a30;
   --paper: #f5f2ea;
   --cream: #e9e3d6;
   --green: #173f35;
   --lime: #d8ff62;
-  --orange: #ff785a;
+  --orange: #a5412c;
+  --soft-green: #59635f;
   --line: rgba(23, 32, 29, 0.18);
 
   /* Shadows */
   --shadow: 0 18px 50px rgba(23, 32, 29, 0.09);
 
+  /* letter-spacing*/
+  --letter-spacing-big: -0.07em;
+  --letter-spacing-medium: -0.06em;
+  --letter-spacing-small: -0.04em;
   /* Layout tokens */
   --page-gutter: clamp(1.25rem, 4vw, 4rem);
   --content-width: 1280px;
@@ -30,7 +36,13 @@
     var(--page-gutter),
     calc((100vw - var(--content-width)) / 2)
   );
+  --background: var(--paper);
 
   /* Loading state */
   --color-loading: #54605b;
+
+  /* Error state */
+--error: #c0392b;
+--warning: #f39c12;
+
 }

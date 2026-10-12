@@ -20,7 +20,7 @@
 }
 
 .aboutPage p {
-  color: #4f5c57;
+  color: var(--soft-green);
   font-size: 1.08rem;
   line-height: 1.7;
 }
@@ -45,12 +45,13 @@
 .aboutAudiences {
   background: var(--green);
   border-radius: 18px;
-  color: white;
+  color: var(--paper);
   overflow: hidden;
 }
 
 .aboutSectionHeading {
   padding: clamp(2rem, 5vw, 4.5rem);
+  margin-top: auto;
 }
 
 .aboutAudiences .aboutSectionHeading h2 {
@@ -90,7 +91,7 @@
 }
 
 .organizerAudience span {
-  color: #355048;
+  color: var(--Ink);
 }
 
 .aboutAudienceSplit h3 {
@@ -110,7 +111,6 @@
   text-decoration-color: currentColor;
   text-underline-offset: 0.35rem;
 }
-
 
 /* FLOW SECTION */
 .aboutFlowSection .aboutSectionHeading {
@@ -142,7 +142,7 @@
 }
 
 .aboutFlowList span {
-  color: #a5412c;
+  color: var(--orange);
   display: block;
   margin-bottom: 3.5rem;
 }

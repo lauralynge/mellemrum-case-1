@@ -60,7 +60,7 @@
   font-size: clamp(3rem, 5vw, 4rem);
   font-weight: 800;
   line-height: 0.95;
-  letter-spacing: -0.065em;
+  letter-spacing: var(--letter-spacing-medium);
   margin: 0;
 }
 
@@ -94,14 +94,14 @@
 }
 
 .fieldError {
-  color: #c0392b;
+  color: var(--error);
   font-weight: 600;
   text-transform: none;
   letter-spacing: normal;
 }
 
 .inputError {
-  border-color: #c0392b !important;
+  border-color: var(--error) !important;
 }
 
 /* Responsive: stak formularen i én kolonne på tablet/mobil */
